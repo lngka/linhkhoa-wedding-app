@@ -105,7 +105,7 @@ export function Hourglass({ className = '' }: { className?: string }) {
   )
 }
 
-const ICONS: Record<ProgramIcon | 'map' | 'calendar' | 'gift' | 'car' | 'hotel' | 'shirt' | 'music-on' | 'music-off', ReactNode> = {
+const ICONS: Record<ProgramIcon | 'map' | 'calendar' | 'gift' | 'car' | 'hotel' | 'shirt' | 'speaker' | 'speaker-low' | 'speaker-off', ReactNode> = {
   welcome: (
     <>
       <path d="M5 11h22v15H5z" />
@@ -175,19 +175,23 @@ const ICONS: Record<ProgramIcon | 'map' | 'calendar' | 'gift' | 'car' | 'hotel' 
       <path d="M16 9v5" />
     </>
   ),
-  'music-on': (
+  speaker: (
     <>
-      <path d="M12 23V8l14-3v15" />
-      <circle cx="9" cy="23" r="3" />
-      <circle cx="23" cy="20" r="3" />
+      <path d="M6 12.5h4.2L17 6.5v19l-6.8-6H6z" />
+      <path d="M21 12.2c1.7 1.2 1.7 6.4 0 7.6" />
+      <path d="M24.2 9c3 2.3 3 11.7 0 14" />
     </>
   ),
-  'music-off': (
+  'speaker-low': (
     <>
-      <path d="M12 23V8l14-3v15" />
-      <circle cx="9" cy="23" r="3" />
-      <circle cx="23" cy="20" r="3" />
-      <path d="M4 4l24 24" />
+      <path d="M6 12.5h4.2L17 6.5v19l-6.8-6H6z" />
+      <path d="M21 12.2c1.7 1.2 1.7 6.4 0 7.6" />
+    </>
+  ),
+  'speaker-off': (
+    <>
+      <path d="M6 12.5h4.2L17 6.5v19l-6.8-6H6z" />
+      <path d="M21 13l7 7M28 13l-7 7" />
     </>
   ),
 }

@@ -1,6 +1,4 @@
 import { useEffect, useImperativeHandle, useRef, type Ref } from 'react'
-import { reducedMotion } from './useScrollAnim'
-
 export type GoldDustHandle = { burst: (x: number, y: number, count?: number) => void }
 
 type Particle = {
@@ -60,8 +58,6 @@ export function GoldDust({
     let h = 0
     let raf = 0
     let visible = true
-    const still = reducedMotion()
-
     const spawn = (anywhere: boolean): Particle => ({
       x: Math.random() * w,
       y: anywhere ? Math.random() * h : h + 10,
@@ -83,7 +79,7 @@ export function GoldDust({
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
     resize()
-    particles.current = still ? [] : Array.from({ length: count }, () => spawn(true))
+    particles.current = Array.from({ length: count }, () => spawn(true))
 
     const frame = () => {
       raf = 0

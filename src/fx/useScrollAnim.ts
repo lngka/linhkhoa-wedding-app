@@ -5,9 +5,6 @@ import Lenis from 'lenis'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export const reducedMotion = () =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
 let lenis: Lenis | null = null
 
 export const scrollLock = (locked: boolean) => {
@@ -19,7 +16,7 @@ export const scrollLock = (locked: boolean) => {
 export const scrollToEl = (el: Element | null) => {
   if (!el) return
   if (lenis) lenis.scrollTo(el as HTMLElement, { duration: 1.6 })
-  else el.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth' })
+  else el.scrollIntoView({ behavior: 'smooth' })
 }
 
 export function useSmoothScroll() {
@@ -42,7 +39,6 @@ export function useSmoothScroll() {
   }, [])
 
   useEffect(() => {
-    if (reducedMotion()) return
     lenis = new Lenis({ lerp: 0.09, smoothWheel: true })
     lenis.on('scroll', ScrollTrigger.update)
     const tick = (t: number) => lenis?.raf(t * 1000)
@@ -65,10 +61,9 @@ export function useReveal(scope: RefObject<HTMLElement | null>) {
     const root = scope.current
     if (!root) return
     const els = root.querySelectorAll<HTMLElement>('[data-reveal]')
-    const still = reducedMotion()
     const ctx = gsap.context(() => {
       els.forEach((el) => {
-        const kind = still ? 'fade' : el.dataset.reveal || 'up'
+        const kind = el.dataset.reveal || 'up'
         const from: gsap.TweenVars = { opacity: 0 }
         if (kind === 'up') from.y = 32
         if (kind === 'scale') from.scale = 0.9

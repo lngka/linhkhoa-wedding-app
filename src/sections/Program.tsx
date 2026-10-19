@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { content } from '../content'
 import { Heading, Heart, Icon } from '../fx/Ornaments'
-import { reducedMotion, useReveal } from '../fx/useScrollAnim'
+import { useReveal } from '../fx/useScrollAnim'
 
 const ROW = 150
 const AMP = 22
@@ -32,7 +32,6 @@ export function Program() {
   }, [])
 
   useLayoutEffect(() => {
-    if (reducedMotion()) return
     const ctx = gsap.context(() => {
       gsap.fromTo(
         '.wave-draw',

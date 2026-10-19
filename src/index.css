@@ -1,8 +1,8 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-cream: #f7f1e8;
-  --color-cream-deep: #efe5d4;
+  --color-cream: #f9efea;
+  --color-cream-deep: #f2e1d9;
   --color-navy: #1f2f6b;
   --color-navy-deep: #16224f;
   --color-gold: #b8894a;
@@ -76,7 +76,7 @@
     position: relative;
     border: 1.5px solid var(--color-gold);
     background:
-      radial-gradient(120% 70% at 50% 0%, #fffdf8 0%, var(--color-cream) 60%, var(--color-cream-deep) 100%);
+      radial-gradient(120% 70% at 50% 0%, #fffaf7 0%, var(--color-cream) 60%, var(--color-cream-deep) 100%);
   }
 }
 
@@ -129,6 +129,50 @@
   to { background-position: -200% 0; }
 }
 
+/* Volume slider inside the floating speaker control. */
+.vol-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  width: 104px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-gold) var(--fill, 45%), rgb(31 47 107 / 0.16) var(--fill, 45%));
+  cursor: pointer;
+}
+.vol-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--color-cream);
+  border: 2px solid var(--color-navy);
+  box-shadow: 0 1px 3px rgb(31 47 107 / 0.35);
+}
+.vol-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-navy);
+  border-radius: 999px;
+  background: var(--color-cream);
+  box-shadow: 0 1px 3px rgb(31 47 107 / 0.35);
+}
+.vol-slider::-moz-range-track {
+  height: 3px;
+  background: transparent;
+  border: none;
+}
+.speaker-live path:nth-child(n + 2) {
+  animation: speakerWave 1.6s ease-in-out infinite;
+}
+.speaker-live path:nth-child(3) {
+  animation-delay: 0.25s;
+}
+@keyframes speakerWave {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
 .hg-spin { animation: hgSpin 7s ease-in-out infinite; }
 .hg-sand-top { animation: hgTop 7s linear infinite; }
 .hg-sand-bot { animation: hgBot 7s linear infinite; }
@@ -138,13 +182,3 @@
 @keyframes hgBot { 0% { transform: translateY(42px); } 84%, 100% { transform: translateY(0); } }
 @keyframes hgStream { to { stroke-dashoffset: -10; } }
 @keyframes hgStreamShow { 0% { opacity: 1; } 84% { opacity: 0; } }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-  .hg-sand-top, .hg-sand-bot { transform: translateY(21px); }
-  .hg-stream { display: none; }
-}

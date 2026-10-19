@@ -4,7 +4,7 @@ import { asset, content } from '../content'
 import { GlassShimmer } from '../fx/GlassShimmer'
 import { GoldDust } from '../fx/GoldDust'
 import { HeartDivider, Sprig } from '../fx/Ornaments'
-import { reducedMotion, scrollToEl } from '../fx/useScrollAnim'
+import { scrollToEl } from '../fx/useScrollAnim'
 
 const ARCH = asset('arch.webp')
 
@@ -12,7 +12,6 @@ export function Hero({ opened }: { opened: boolean }) {
   const root = useRef<HTMLElement>(null)
 
   useLayoutEffect(() => {
-    if (reducedMotion()) return
     const ctx = gsap.context(() => {
       gsap.set('.hero-arch', { scale: 1.08, opacity: 0 })
       gsap.set('.hero-fade', { opacity: 0, y: 14 })
@@ -22,7 +21,7 @@ export function Hero({ opened }: { opened: boolean }) {
   }, [])
 
   useEffect(() => {
-    if (!opened || reducedMotion()) return
+    if (!opened) return
     const ctx = gsap.context(() => {
       gsap
         .timeline({ delay: 1.3 })

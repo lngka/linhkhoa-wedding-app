@@ -32,8 +32,8 @@ export const content = {
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Flamingo+Cat+Ba+Resort',
   },
 
-  // Background music (optional). Put an mp3 in public/assets and set e.g. asset('music.mp3').
-  music: null as string | null,
+  // Loops after the guest opens the invitation. null hides the control.
+  music: asset('nocturne-waltz.mp3') as string | null,
 
   hero: {
     pretitle: 'Save the date',
