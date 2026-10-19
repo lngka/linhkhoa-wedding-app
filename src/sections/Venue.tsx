@@ -1,13 +1,15 @@
 import { useRef, useState } from 'react'
-import { asset, content } from '../content'
+import { asset } from '../content'
 import { downloadIcs, googleCalendarUrl } from '../lib/calendar'
 import { GlassShimmer } from '../fx/GlassShimmer'
 import { Heading, HeartDivider, Icon } from '../fx/Ornaments'
 import { useReveal } from '../fx/useScrollAnim'
+import { useContent } from '../i18n'
 
 const VENUE = asset('venue.webp')
 
 export function Venue() {
+  const content = useContent()
   const root = useRef<HTMLElement>(null)
   const [calOpen, setCalOpen] = useState(false)
   useReveal(root)
@@ -16,7 +18,7 @@ export function Venue() {
 
   return (
     <section ref={root} className="relative px-6 pt-16 pb-20 text-center">
-      <Heading title="Lễ cưới & Tiệc" subtitle="Nơi hẹn ước trăm năm" />
+      <Heading title={content.venue.title} subtitle={content.venue.subtitle} />
 
       <div data-reveal="up" className="glass-frame mx-auto mt-10 max-w-[360px]">
         <div className="glass-inner px-5 pt-8 pb-7">
@@ -47,16 +49,16 @@ export function Venue() {
 
       <div data-reveal="up" className="relative mt-8 flex flex-wrap items-center justify-center gap-3">
         <a href={content.venue.mapsUrl} target="_blank" rel="noreferrer" className="btn btn-navy">
-          <Icon name="map" className="h-4 w-4" /> Chỉ đường
+          <Icon name="map" className="h-4 w-4" /> {content.ui.directions}
         </a>
         <div className="relative">
           <button type="button" onClick={() => setCalOpen((v) => !v)} className="btn btn-outline" aria-expanded={calOpen}>
-            <Icon name="calendar" className="h-4 w-4" /> Thêm vào lịch
+            <Icon name="calendar" className="h-4 w-4" /> {content.ui.addToCalendar}
           </button>
           {calOpen && (
             <div className="absolute top-full right-0 z-10 mt-2 w-52 overflow-hidden rounded-xl border border-gold/40 bg-cream text-left shadow-xl">
               <a
-                href={googleCalendarUrl()}
+                href={googleCalendarUrl(content)}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setCalOpen(false)}
@@ -67,7 +69,7 @@ export function Venue() {
               <button
                 type="button"
                 onClick={() => {
-                  downloadIcs()
+                  downloadIcs(content)
                   setCalOpen(false)
                 }}
                 className="block w-full border-t border-gold/30 px-4 py-3 text-left font-serif text-[16px] text-navy hover:bg-cream-deep"

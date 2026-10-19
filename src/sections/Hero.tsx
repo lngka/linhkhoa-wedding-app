@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { asset, content } from '../content'
+import { asset } from '../content'
+import { useContent } from '../i18n'
 import { GlassShimmer } from '../fx/GlassShimmer'
 import { GoldDust } from '../fx/GoldDust'
 import { HeartDivider, Sprig } from '../fx/Ornaments'
@@ -9,6 +10,7 @@ import { scrollToEl } from '../fx/useScrollAnim'
 const ARCH = asset('arch.webp')
 
 export function Hero({ opened }: { opened: boolean }) {
+  const content = useContent()
   const root = useRef<HTMLElement>(null)
 
   useLayoutEffect(() => {

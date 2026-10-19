@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { asset, content } from '../content'
+import { asset } from '../content'
+import { useContent } from '../i18n'
 import { GlassShimmer } from '../fx/GlassShimmer'
 import { GoldDust, type GoldDustHandle } from '../fx/GoldDust'
 import { useReveal } from '../fx/useScrollAnim'
@@ -11,11 +12,14 @@ const INNER = { left: 18.1, top: 20.4, width: 64.9, height: 59.8 }
 const REVEAL_AT = 0.5
 
 export function ScratchReveal() {
+  const content = useContent()
   const root = useRef<HTMLElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const frameRef = useRef<HTMLDivElement>(null)
   const dust = useRef<GoldDustHandle>(null)
   const [revealed, setRevealed] = useState(false)
+  const repaint = useRef<(hint: string) => void>(null)
+  const hint = content.scratch.hint
   useReveal(root)
 
   useEffect(() => {
@@ -26,6 +30,7 @@ export function ScratchReveal() {
     let last: { x: number; y: number } | null = null
     let strokes = 0
     let done = false
+    let text = ''
 
     const paint = () => {
       const w = canvas.offsetWidth
@@ -48,11 +53,16 @@ export function ScratchReveal() {
       ctx.fillStyle = '#b8894a'
       ctx.textAlign = 'center'
       ctx.font = `38px "Great Vibes", cursive`
-      ctx.fillText(content.scratch.hint, w / 2, h / 2)
+      ctx.fillText(text, w / 2, h / 2)
       ctx.font = `18px "Cormorant Garamond", serif`
       ctx.fillText('♡', w / 2, h / 2 + 30)
     }
     document.fonts.ready.then(paint)
+    // Language switch repaints the cover, but never wipes a guest's scratching.
+    repaint.current = (next) => {
+      text = next
+      if (!strokes && !done) paint()
+    }
 
     const pos = (e: PointerEvent) => {
       const r = canvas.getBoundingClientRect()
@@ -112,12 +122,15 @@ export function ScratchReveal() {
     canvas.addEventListener('pointerup', up)
     canvas.addEventListener('pointercancel', up)
     return () => {
+      repaint.current = null
       canvas.removeEventListener('pointerdown', down)
       canvas.removeEventListener('pointermove', move)
       canvas.removeEventListener('pointerup', up)
       canvas.removeEventListener('pointercancel', up)
     }
   }, [])
+
+  useEffect(() => repaint.current?.(hint), [hint])
 
   return (
     <section ref={root} className="relative overflow-hidden rounded-t-[200px] bg-navy px-6 pt-20 pb-20 text-center text-cream">
@@ -128,7 +141,7 @@ export function ScratchReveal() {
           {content.scratch.title}
         </h2>
         {content.scratch.text.map((line, i) => (
-          <p key={line} data-reveal="fade" data-delay={0.15 * i} className="mt-2 font-serif text-[17px] text-cream/80 italic">
+          <p key={i} data-reveal="fade" data-delay={0.15 * i} className="mt-2 font-serif text-[17px] text-cream/80 italic">
             {line}
           </p>
         ))}
@@ -150,7 +163,7 @@ export function ScratchReveal() {
           <GlassShimmer src={OVAL} />
         </div>
         <p className={`eyebrow mt-6 text-[11px] text-gold-light transition-opacity duration-700 ${revealed ? 'opacity-0' : 'opacity-100'}`}>
-          Dùng ngón tay cào lên khung kính
+          {content.scratch.help}
         </p>
       </div>
     </section>

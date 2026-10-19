@@ -1,12 +1,15 @@
-import { content } from '../content'
+import type { Content } from '../content'
 
 const stamp = (iso: string) => new Date(iso).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')
 
-const title = `Đám cưới ${content.groom.short} & ${content.bride.short}`
-const location = `${content.venue.name}, ${content.venue.city}`
-const details = [...content.program.items.map((i) => `${i.time} ${i.title}`), content.footer.closing].join('\n')
+const event = (content: Content) => ({
+  title: content.calendarTitle,
+  location: `${content.venue.name}, ${content.venue.city}`,
+  details: [...content.program.items.map((i) => `${i.time} ${i.title}`), content.footer.closing].join('\n'),
+})
 
-export const googleCalendarUrl = () => {
+export const googleCalendarUrl = (content: Content) => {
+  const { title, location, details } = event(content)
   const p = new URLSearchParams({
     action: 'TEMPLATE',
     text: title,
@@ -20,7 +23,8 @@ export const googleCalendarUrl = () => {
 
 const esc = (s: string) => s.replace(/([,;\\])/g, '\\$1').replace(/\n/g, '\\n')
 
-export const downloadIcs = () => {
+export const downloadIcs = (content: Content) => {
+  const { title, location, details } = event(content)
   const ics = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',

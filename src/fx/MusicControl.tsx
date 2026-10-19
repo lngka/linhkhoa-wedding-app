@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState, type CSSProperties } from 'react'
-import { content } from '../content'
+import { useContent } from '../i18n'
 import { Icon } from './Ornaments'
 
 const DEFAULT_VOLUME = 0.45
@@ -8,6 +8,7 @@ export type MusicControlHandle = { play: () => void }
 
 /** Floating speaker. Music starts with the door tap; the button opens mute + volume. */
 export const MusicControl = forwardRef<MusicControlHandle, { opened: boolean }>(function MusicControl({ opened }, ref) {
+  const content = useContent()
   const audio = useRef<HTMLAudioElement>(null)
   const root = useRef<HTMLDivElement>(null)
   const volumeRef = useRef(DEFAULT_VOLUME)
@@ -85,7 +86,7 @@ export const MusicControl = forwardRef<MusicControlHandle, { opened: boolean }>(
         className={`pointer-events-none fixed inset-x-0 z-40 flex justify-center transition-opacity duration-700 ${opened ? 'opacity-100' : 'opacity-0'}`}
         style={{ bottom: 'max(1rem, env(safe-area-inset-bottom))' }}
       >
-        <div className="flex w-full max-w-[480px] justify-end px-4">
+        <div className="flex w-full max-w-[480px] justify-end px-2">
           <div
             ref={root}
             className={`pointer-events-auto flex items-center rounded-full border border-gold/60 bg-cream/92 text-navy shadow-[0_10px_28px_-12px_rgb(31_47_107/0.75)] backdrop-blur-md ${opened ? '' : 'pointer-events-none'}`}
@@ -99,7 +100,7 @@ export const MusicControl = forwardRef<MusicControlHandle, { opened: boolean }>(
                   <button
                     type="button"
                     onClick={toggleMute}
-                    aria-label={silent ? 'Bật nhạc' : 'Tắt nhạc'}
+                    aria-label={silent ? content.ui.musicOn : content.ui.musicOff}
                     aria-pressed={silent}
                     className="grid h-7 w-7 place-items-center text-navy/80"
                   >
@@ -112,7 +113,7 @@ export const MusicControl = forwardRef<MusicControlHandle, { opened: boolean }>(
                     max={1}
                     step={0.01}
                     value={shown}
-                    aria-label="Âm lượng"
+                    aria-label={content.ui.volume}
                     style={{ '--fill': `${shown * 100}%` } as CSSProperties}
                     onChange={(e) => onVolume(Number(e.target.value))}
                   />
@@ -128,7 +129,7 @@ export const MusicControl = forwardRef<MusicControlHandle, { opened: boolean }>(
                 }
               }}
               aria-expanded={open}
-              aria-label={open ? 'Đóng chỉnh âm lượng' : 'Chỉnh âm lượng'}
+              aria-label={open ? content.ui.volumeClose : content.ui.volumeOpen}
               className="m-1 grid h-9 w-9 place-items-center rounded-full bg-navy text-cream"
             >
               <Icon name={icon} className={`h-[18px] w-[18px] ${playing && !silent ? 'speaker-live' : ''}`} />

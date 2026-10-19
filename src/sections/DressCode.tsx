@@ -1,9 +1,10 @@
 import { useRef } from 'react'
-import { content } from '../content'
+import { useContent } from '../i18n'
 import { Heading, Icon } from '../fx/Ornaments'
 import { useReveal } from '../fx/useScrollAnim'
 
 export function DressCode() {
+  const content = useContent()
   const root = useRef<HTMLElement>(null)
   useReveal(root)
   const d = content.dressCode

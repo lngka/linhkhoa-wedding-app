@@ -1,9 +1,10 @@
 import { useRef } from 'react'
-import { content } from '../content'
+import { useContent } from '../i18n'
 import { Heart, HeartDivider, Sprig } from '../fx/Ornaments'
 import { useReveal } from '../fx/useScrollAnim'
 
 export function Families() {
+  const content = useContent()
   const root = useRef<HTMLElement>(null)
   useReveal(root)
   const { groom, bride } = content.families
@@ -18,7 +19,7 @@ export function Families() {
       </h2>
       <div className="mt-2 space-y-0.5">
         {content.invitationLines.map((l, i) => (
-          <p key={l} data-reveal="fade" data-delay={0.1 * i} className="font-serif text-[17px] text-navy/85">
+          <p key={i} data-reveal="fade" data-delay={0.1 * i} className="font-serif text-[17px] text-navy/85">
             {l}
           </p>
         ))}
@@ -47,7 +48,7 @@ export function Families() {
       <div data-reveal="up" className="mx-auto mt-10 grid max-w-[360px] grid-cols-[1fr_auto_1fr] items-start gap-3">
         {[groom, null, bride].map((fam, i) =>
           fam ? (
-            <div key={fam.label}>
+            <div key={i}>
               <p className="eyebrow text-navy">{fam.label}</p>
               <Heart className="mx-auto my-2 h-2.5 text-gold" />
               {fam.parents.map((p) => (

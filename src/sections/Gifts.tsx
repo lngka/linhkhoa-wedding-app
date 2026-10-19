@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react'
-import { content } from '../content'
 import { GoldDust } from '../fx/GoldDust'
 import { Heading, Icon } from '../fx/Ornaments'
 import { useReveal } from '../fx/useScrollAnim'
+import { useContent } from '../i18n'
 
 export function Gifts() {
+  const content = useContent()
   const root = useRef<HTMLElement>(null)
   const [copied, setCopied] = useState<string | null>(null)
   useReveal(root)
@@ -37,13 +38,13 @@ export function Gifts() {
             <div key={a.owner} data-reveal="up" data-delay={0.1 * i} className="glass-frame">
               <div className="glass-inner px-4 py-5">
                 {a.qr && <img src={a.qr} alt={`QR ${a.owner}`} loading="lazy" className="mx-auto mb-3 w-36 rounded" />}
-                <p className="eyebrow text-[11px] text-gold">{i === 0 ? 'Chú rể' : 'Cô dâu'}</p>
+                <p className="eyebrow text-[11px] text-gold">{g.roles[i]}</p>
                 <p className="script mt-1 text-[30px] leading-none text-navy">{a.owner}</p>
                 <p className="mt-2 font-serif text-[15px] text-navy/70">{a.bank}</p>
                 <button type="button" onClick={() => copy(a.number)} className="mt-1 font-serif text-[20px] tracking-wider text-navy">
                   {a.number}
                 </button>
-                <p className="eyebrow mt-1 text-[10px] text-gold">{copied === a.number ? 'Đã sao chép ♡' : 'Chạm để sao chép'}</p>
+                <p className="eyebrow mt-1 text-[10px] text-gold">{copied === a.number ? g.copied : g.copy}</p>
               </div>
             </div>
           ))}

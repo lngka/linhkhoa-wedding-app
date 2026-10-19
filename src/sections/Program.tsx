@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { content } from '../content'
+import { useContent } from '../i18n'
 import { Heading, Heart, Icon } from '../fx/Ornaments'
 import { useReveal } from '../fx/useScrollAnim'
 
@@ -17,6 +17,7 @@ function wavePath(rows: number, cx: number) {
 }
 
 export function Program() {
+  const content = useContent()
   const root = useRef<HTMLElement>(null)
   const track = useRef<HTMLDivElement>(null)
   const items = content.program.items

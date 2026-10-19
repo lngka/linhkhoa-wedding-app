@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
-import { content } from './content'
+import { LangSwitch } from './fx/LangSwitch'
 import { MusicControl, type MusicControlHandle } from './fx/MusicControl'
+import { useContent } from './i18n'
 import { useSmoothScroll } from './fx/useScrollAnim'
 import { Countdown } from './sections/Countdown'
 import { DressCode } from './sections/DressCode'
@@ -17,7 +18,7 @@ import { Venue } from './sections/Venue'
 export default function App() {
   const [opened, setOpened] = useState(false)
   const music = useRef<MusicControlHandle>(null)
-  const s = content.sections
+  const s = useContent().sections
   useSmoothScroll()
 
   const onOpen = () => {
@@ -42,6 +43,7 @@ export default function App() {
       </main>
 
       <MusicControl ref={music} opened={opened} />
+      <LangSwitch />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import { asset, content } from '../content'
+import { asset } from '../content'
+import { useContent } from '../i18n'
 import { GlassShimmer } from '../fx/GlassShimmer'
 import { GoldDust, type GoldDustHandle } from '../fx/GoldDust'
 import { Seal } from '../fx/Ornaments'
@@ -8,6 +9,7 @@ import { scrollLock } from '../fx/useScrollAnim'
 
 /** Full-screen stained-glass doors with a monogram seal. Tap to open. */
 export function Gate({ onOpen }: { onOpen: () => void }) {
+  const content = useContent()
   const root = useRef<HTMLDivElement>(null)
   const dust = useRef<GoldDustHandle>(null)
   const [gone, setGone] = useState(false)
