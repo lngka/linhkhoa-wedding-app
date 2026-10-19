@@ -36,7 +36,6 @@ export const content = {
   music: asset('nocturne-waltz.mp3') as string | null,
 
   hero: {
-    pretitle: 'Save the date',
     button: 'Mở thiệp',
   },
 
@@ -115,7 +114,7 @@ export const content = {
     venue: true,
     program: true,
     dressCode: true,
-    gifts: true,
+    gifts: false,
     travel: true,
   },
 }

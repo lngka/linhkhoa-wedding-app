@@ -46,14 +46,12 @@ export function Hero({ opened }: { opened: boolean }) {
         <GlassShimmer src={ARCH} delay={1} />
 
         <div className="absolute inset-x-[19%] top-[17%] bottom-[25%] flex flex-col items-center justify-center text-center">
-          <p className="hero-fade eyebrow text-[11px] text-gold">{content.hero.pretitle}</p>
-          <p className="hero-fade mt-1 font-serif text-[14px] italic text-navy/80">{content.invitationLines[0]}</p>
-
-          <h1 className="mt-3 text-navy">
+          <h1 className="text-navy">
             <span className="hero-write script block text-[clamp(34px,10vw,46px)]">{content.groom.short}</span>
             <span className="hero-fade script block text-[30px] text-gold">&amp;</span>
             <span className="hero-write script block text-[clamp(34px,10vw,46px)]">{content.bride.short}</span>
           </h1>
+          <p className="hero-fade mt-2 font-serif text-[14px] italic text-navy/80">{content.invitationLines[0]}</p>
 
           <div className="hero-fade mt-3 w-full">
             <HeartDivider width={140} />
