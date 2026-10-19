@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-cream: #f7f1e8;
+  --color-cream-deep: #efe5d4;
+  --color-navy: #1f2f6b;
+  --color-navy-deep: #16224f;
+  --color-gold: #b8894a;
+  --color-gold-light: #d9b779;
+  --color-sea: #5e9ea8;
+  --color-aqua: #a9d3d0;
+
+  --font-script: 'Great Vibes', cursive;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sc: 'Cormorant SC', 'Cormorant Garamond', Georgia, serif;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-navy-deep font-serif text-navy antialiased;
+    font-size: 18px;
+    font-variant-numeric: lining-nums;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .page {
+    @apply relative mx-auto w-full max-w-[480px] overflow-x-clip bg-cream;
+    box-shadow: 0 0 80px rgb(0 0 0 / 0.45);
+  }
+
+  .script {
+    @apply font-script font-normal leading-[1.15];
+  }
+
+  .eyebrow {
+    @apply font-sc text-[13px] tracking-[0.28em] uppercase;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 font-sc text-[13px] tracking-[0.2em] uppercase transition;
+  }
+  .btn-navy {
+    @apply bg-navy text-cream shadow-[0_6px_18px_-8px_rgb(31_47_107/0.8)] active:scale-95;
+  }
+  .btn-outline {
+    @apply border border-gold/70 text-navy active:scale-95;
+  }
+
+  /* Leaded glass frame used for cards. */
+  .glass-frame {
+    position: relative;
+    padding: 14px;
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 40%),
+      repeating-conic-gradient(from 45deg at 50% 50%, #a9d3d0 0 25%, #f7f1e8 0 50%) 0 0 / 28px 28px,
+      #a9d3d0;
+    border: 2px solid var(--color-gold);
+    box-shadow:
+      inset 0 0 0 4px rgb(184 137 74 / 0.6),
+      inset 0 0 0 7px var(--color-navy),
+      0 18px 40px -24px rgb(31 47 107 / 0.6);
+  }
+  .glass-frame > .glass-inner {
+    position: relative;
+    border: 1.5px solid var(--color-gold);
+    background:
+      radial-gradient(120% 70% at 50% 0%, #fffdf8 0%, var(--color-cream) 60%, var(--color-cream-deep) 100%);
+  }
+}
+
+@layer utilities {
+  /* Light sweeping across glass. Put on an absolutely positioned overlay. */
+  .shimmer {
+    pointer-events: none;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      rgb(255 247 222 / 0.0) 38%,
+      rgb(255 247 222 / 0.55) 46%,
+      rgb(255 255 255 / 0.85) 50%,
+      rgb(255 247 222 / 0.55) 54%,
+      transparent 62%
+    );
+    background-size: 300% 100%;
+    mix-blend-mode: soft-light;
+    animation: shimmer 6.5s ease-in-out infinite;
+  }
+  .glow-pulse {
+    animation: glow 4s ease-in-out infinite;
+  }
+  .float-y {
+    animation: floatY 2.2s ease-in-out infinite;
+  }
+  .gold-text {
+    background: linear-gradient(100deg, #9c6f35 0%, #d9b779 35%, #f3dfae 50%, #d9b779 65%, #9c6f35 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: goldText 6s linear infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 120% 0; }
+  60%, 100% { background-position: -120% 0; }
+}
+@keyframes glow {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+@keyframes goldText {
+  to { background-position: -200% 0; }
+}
+
+.hg-spin { animation: hgSpin 7s ease-in-out infinite; }
+.hg-sand-top { animation: hgTop 7s linear infinite; }
+.hg-sand-bot { animation: hgBot 7s linear infinite; }
+.hg-stream { animation: hgStream 0.5s linear infinite, hgStreamShow 7s step-end infinite; }
+@keyframes hgSpin { 0%, 84% { transform: rotate(0); } 100% { transform: rotate(180deg); } }
+@keyframes hgTop { 0% { transform: translateY(0); } 84%, 100% { transform: translateY(42px); } }
+@keyframes hgBot { 0% { transform: translateY(42px); } 84%, 100% { transform: translateY(0); } }
+@keyframes hgStream { to { stroke-dashoffset: -10; } }
+@keyframes hgStreamShow { 0% { opacity: 1; } 84% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .hg-sand-top, .hg-sand-bot { transform: translateY(21px); }
+  .hg-stream { display: none; }
+}
