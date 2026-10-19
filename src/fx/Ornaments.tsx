@@ -45,6 +45,10 @@ export function Sprig({ className = '', ...props }: P) {
   )
 }
 
+// Great Vibes ink sits right of and above its advance box; measured offsets that optically centre "K&L".
+const MONO_DX = -5
+const MONO_DY = 5
+
 /** Wax-seal style monogram for the gate. */
 export function Seal({ left, right, className = '' }: { left: string; right: string; className?: string }) {
   const petals = Array.from({ length: 16 }, (_, i) => i * 22.5)
@@ -70,10 +74,10 @@ export function Seal({ left, right, className = '' }: { left: string; right: str
       ))}
       <circle cx="100" cy="100" r="60" fill="url(#seal-glass)" stroke="url(#seal-gold)" strokeWidth="5" />
       <circle cx="100" cy="100" r="52" fill="none" stroke="#b8894a" strokeWidth="1" />
-      <text x="100" y="114" textAnchor="middle" fontFamily="Great Vibes, cursive" fontSize="46" fill="#1f2f6b">
+      <text x={100 + MONO_DX} y={100 + MONO_DY} textAnchor="middle" dominantBaseline="central" fontFamily="Great Vibes, cursive" fontSize="44" fill="#1f2f6b">
         {left}
-        <tspan fill="#b8894a" fontSize="34" dx="2" dy="-2">&amp;</tspan>
-        <tspan dx="2" dy="2">{right}</tspan>
+        <tspan fill="#b8894a" fontSize="32">&amp;</tspan>
+        {right}
       </text>
     </svg>
   )

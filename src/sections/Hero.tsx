@@ -24,7 +24,7 @@ export function Hero({ opened }: { opened: boolean }) {
     if (!opened) return
     const ctx = gsap.context(() => {
       gsap
-        .timeline({ delay: 1.3 })
+        .timeline({ delay: 0.9 })
         .to('.hero-arch', { scale: 1, opacity: 1, duration: 1.8, ease: 'power2.out' })
         .to('.hero-fade', { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: 'power2.out' }, 0.6)
         .to('.hero-write', { clipPath: 'inset(-20% 0% -20% 0)', duration: 1.6, stagger: 0.7, ease: 'power1.inOut' }, 1)

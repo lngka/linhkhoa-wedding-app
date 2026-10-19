@@ -17,8 +17,8 @@ export function Gate({ onOpen }: { onOpen: () => void }) {
     scrollLock(true)
     window.scrollTo(0, 0)
     const ctx = gsap.context(() => {
-      gsap.from('.gate-seal', { scale: 0.6, opacity: 0, duration: 1.4, ease: 'back.out(1.6)', delay: 0.3 })
-      gsap.from('.gate-hint', { opacity: 0, y: 10, duration: 1, delay: 1.2 })
+      gsap.from('.gate-seal', { opacity: 0, y: 8, duration: 1.2, ease: 'power2.out', delay: 0.3 })
+      gsap.from('.gate-hint', { opacity: 0, y: 10, duration: 1, delay: 1.1 })
     }, root)
     return () => ctx.revert()
   }, [])
@@ -29,7 +29,7 @@ export function Gate({ onOpen }: { onOpen: () => void }) {
     onOpen()
     const el = root.current!
     const rect = el.getBoundingClientRect()
-    dust.current?.burst(rect.width / 2, rect.height / 2, 90)
+    dust.current?.burst(rect.width / 2, rect.height / 2, 60)
 
     const done = () => {
       scrollLock(false)
@@ -37,14 +37,10 @@ export function Gate({ onOpen }: { onOpen: () => void }) {
     }
     gsap
       .timeline({ onComplete: done })
-      .to('.gate-seal', { scale: 1.25, duration: 0.25, ease: 'power2.out' }, 0)
-      .to('.gate-seal', { scale: 0.2, opacity: 0, rotate: 90, duration: 0.5, ease: 'power3.in' }, 0.25)
-      .to('.gate-hint', { opacity: 0, duration: 0.3 }, 0)
-      .fromTo('.gate-light', { opacity: 0, scaleX: 0.02 }, { opacity: 1, scaleX: 1, duration: 0.9, ease: 'power2.inOut' }, 0.45)
-      .to('.gate-left', { rotateY: -105, duration: 2, ease: 'power3.inOut' }, 0.6)
-      .to('.gate-right', { rotateY: 105, duration: 2, ease: 'power3.inOut' }, 0.6)
-      .to('.gate-light', { opacity: 0, duration: 1 }, 1.6)
-      .to(el, { opacity: 0, duration: 0.7 }, 2.1)
+      .to(['.gate-seal', '.gate-hint'], { opacity: 0, duration: 0.5, ease: 'power1.out' }, 0)
+      .to('.gate-left', { rotateY: -105, duration: 1.8, ease: 'power3.inOut' }, 0.2)
+      .to('.gate-right', { rotateY: 105, duration: 1.8, ease: 'power3.inOut' }, 0.2)
+      .to(el, { opacity: 0, duration: 0.8, ease: 'power1.out' }, 1.2)
   }
 
   if (gone) return null
@@ -57,14 +53,13 @@ export function Gate({ onOpen }: { onOpen: () => void }) {
       aria-label={content.gate.hint}
       onClick={open}
       onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && open()}
-      className="fixed inset-0 z-50 flex cursor-pointer justify-center bg-navy-deep"
+      className="fixed inset-0 z-50 flex cursor-pointer justify-center"
     >
       <div className="relative h-full w-full max-w-[480px]">
         {/* Doors only. Firefox drops filtered descendants of a perspective box
             (seal drop-shadow) and any element that has both a transform and
             backdrop-filter (the hint, once GSAP moves it). */}
         <div className="absolute inset-0 overflow-hidden" style={{ perspective: '1400px' }}>
-          <div className="gate-light absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_50%,#fffaf0_0%,#f3dfae_45%,transparent_80%)]" />
           {(['left', 'right'] as const).map((side) => (
             <div
               key={side}
