@@ -1,8 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-cream: #f9efea;
-  --color-cream-deep: #f2e1d9;
+  /* Blush paper: invitation ivory shifted toward rose, still a pale ground. */
+  --color-cream: #f3dcd6;
+  --color-cream-deep: #e8c9c1;
   --color-navy: #1f2f6b;
   --color-navy-deep: #16224f;
   --color-gold: #b8894a;
@@ -76,7 +77,7 @@
     position: relative;
     border: 1.5px solid var(--color-gold);
     background:
-      radial-gradient(120% 70% at 50% 0%, #fffaf7 0%, var(--color-cream) 60%, var(--color-cream-deep) 100%);
+      radial-gradient(120% 70% at 50% 0%, #fff6f3 0%, var(--color-cream) 60%, var(--color-cream-deep) 100%);
   }
 
   /* Matte fabric chip used in the dress-code fan. */

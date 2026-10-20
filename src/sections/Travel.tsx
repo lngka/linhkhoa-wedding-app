@@ -11,7 +11,7 @@ export function Travel() {
 
   return (
     <section ref={root} className="relative px-6 pt-16 pb-16 text-center">
-      <div data-reveal="scale" className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border border-gold/50 bg-[radial-gradient(circle,#fffaf0,var(--color-cream-deep))]">
+      <div data-reveal="scale" className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border border-gold/50 bg-[radial-gradient(circle,#fff5f2,var(--color-cream-deep))]">
         <Icon name="car" className="h-10 w-10 text-gold" />
       </div>
       <Heading title={t.title} />

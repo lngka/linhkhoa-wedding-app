@@ -37,7 +37,7 @@ const vi = {
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Flamingo+Cat+Ba+Resort',
     stay: {
       title: 'Kỳ nghỉ tại resort',
-      intro: 'Dành cho khách lưu trú trong gói phòng cưới — đã gồm những điều dưới đây.',
+      intro: 'Chúng mình xin mời khách nghỉ lại — phòng do mình đài thọ. Trong ngày 22 và sáng ngày 23, bạn được sử dụng những dịch vụ dưới đây.',
       gifts: [
         {
           icon: 'dinner' as const,
@@ -237,7 +237,7 @@ const en = merge<Content>(vi, {
     city: 'Cat Ba, Hai Phong',
     stay: {
       title: 'Your stay at the resort',
-      intro: 'For overnight wedding guests — already included in your room package.',
+      intro: 'Your stay is our gift — the room is on us. On the 22nd and the morning of the 23rd, the services below are yours to enjoy.',
       gifts: [
         {
           title: 'Meals',
