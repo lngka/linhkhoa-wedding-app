@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Blush paper: invitation ivory shifted toward rose, still a pale ground. */
-  --color-cream: #f3dcd6;
-  --color-cream-deep: #e8c9c1;
+  /* Blush paper, one step lighter than the first rose so the page stays bright. */
+  --color-cream: #f6e5e0;
+  --color-cream-deep: #edd5cd;
   --color-navy: #1f2f6b;
   --color-navy-deep: #16224f;
   --color-gold: #b8894a;

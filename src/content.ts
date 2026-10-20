@@ -37,7 +37,7 @@ const vi = {
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Flamingo+Cat+Ba+Resort',
     stay: {
       title: 'Kỳ nghỉ tại resort',
-      intro: 'Chúng mình xin mời khách nghỉ lại — phòng do mình đài thọ. Trong ngày 22 và sáng ngày 23, bạn được sử dụng những dịch vụ dưới đây.',
+      intro: 'Xin mời khách nghỉ lại phòng do bọn mình đài thọ. Trong ngày 22 và sáng ngày 23, bạn được sử dụng những dịch vụ dưới đây.',
       gifts: [
         {
           icon: 'dinner' as const,
@@ -62,12 +62,12 @@ const vi = {
         { icon: 'fitness' as const, text: 'Phòng tập' },
         { icon: 'kids' as const, text: 'Kid Club' },
         { icon: 'wifi' as const, text: 'Internet và truyền hình' },
-        { icon: 'shuttle' as const, text: 'Xe điện trong khu, 6:00–22:00' },
+        { icon: 'shuttle' as const, text: 'Xe điện trong khu, 6:00-22:00' },
       ],
       perksLabel: 'Ưu đãi thêm',
       perks: [
         'Massage và tắm khoáng giảm 20%',
-        'Làm đẹp giảm 15% — chăm sóc da, gội đầu, móng tay và móng chân',
+        'Làm đẹp giảm 15% - chăm sóc da, gội đầu, móng tay và móng chân',
         'Karaoke giảm 200.000đ khi hóa đơn từ 800.000đ',
       ],
     },
@@ -147,15 +147,15 @@ const vi = {
     title: 'Di chuyển & Lưu trú',
     // TẠM: kiểm tra lại lịch trình cụ thể.
     route: [
-      { label: 'Từ Hà Nội', text: 'Xe limousine đến Cát Bà khoảng 3 – 3,5 giờ, qua cầu Tân Vũ – Lạch Huyện và phà Gót – Cái Viềng.' },
-      { label: 'Từ Hải Phòng', text: 'Khoảng 1,5 giờ qua cầu Tân Vũ – Lạch Huyện, đi phà sang đảo.' },
+      { label: 'Từ Hà Nội', text: 'Xe limousine đến Cát Bà khoảng 3 - 3,5 giờ, qua cầu Tân Vũ - Lạch Huyện và phà Gót - Cái Viềng.' },
+      { label: 'Từ Hải Phòng', text: 'Khoảng 1,5 giờ qua cầu Tân Vũ - Lạch Huyện, đi phà sang đảo.' },
     ],
     stay: {
       label: 'Lưu trú',
       name: 'Flamingo Cát Bà Resort',
       lines: ['Nghỉ dưỡng tại resort view biển', 'Full pension + Buffet', 'Thời gian bên nhau và nhiều kỷ niệm đẹp'],
       datesLabel: 'Thời gian',
-      dates: '22 – 23.12.2026',
+      dates: '22 - 23.12.2026',
     },
   },
 
@@ -237,7 +237,7 @@ const en = merge<Content>(vi, {
     city: 'Cat Ba, Hai Phong',
     stay: {
       title: 'Your stay at the resort',
-      intro: 'Your stay is our gift — the room is on us. On the 22nd and the morning of the 23rd, the services below are yours to enjoy.',
+      intro: 'Your stay is our gift - the room is on us. On the 22nd and the morning of the 23rd, the services below are yours to enjoy.',
       gifts: [
         {
           title: 'Meals',
@@ -259,12 +259,12 @@ const en = merge<Content>(vi, {
         { text: 'Fitness centre' },
         { text: 'Kid Club' },
         { text: 'Wi‑Fi and cable TV' },
-        { text: 'Resort shuttle, 6:00–22:00' },
+        { text: 'Resort shuttle, 6:00-22:00' },
       ],
       perksLabel: 'Extra perks',
       perks: [
         '20% off massage and mineral baths',
-        '15% off beauty — facials, hair wash, manicure and pedicure',
+        '15% off beauty - facials, hair wash, manicure and pedicure',
         'VND 200,000 off karaoke when the bill is VND 800,000 or more',
       ],
     },
@@ -332,8 +332,8 @@ const en = merge<Content>(vi, {
   travel: {
     title: 'Travel & Stay',
     route: [
-      { label: 'From Hanoi', text: 'Limousine bus to Cat Ba, about 3 – 3.5 hours, via Tan Vu – Lach Huyen bridge and the Got – Cai Vieng ferry.' },
-      { label: 'From Hai Phong', text: 'About 1.5 hours via Tan Vu – Lach Huyen bridge, then the ferry to the island.' },
+      { label: 'From Hanoi', text: 'Limousine bus to Cat Ba, about 3 - 3.5 hours, via Tan Vu - Lach Huyen bridge and the Got - Cai Vieng ferry.' },
+      { label: 'From Hai Phong', text: 'About 1.5 hours via Tan Vu - Lach Huyen bridge, then the ferry to the island.' },
     ],
     stay: {
       label: 'Stay',
