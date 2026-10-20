@@ -131,11 +131,12 @@ const ICONS: Record<ProgramIcon | 'map' | 'calendar' | 'gift' | 'car' | 'hotel' 
       <path d="M4 8v6a2 2 0 0 0 2 2v10M6 8v5M8 8v6a2 2 0 0 1-2 2M28 8c-2 1-3 4-3 7h3v11" />
     </>
   ),
-  music: (
+  leisure: (
     <>
-      <path d="M12 23V8l14-3v15" />
-      <circle cx="9" cy="23" r="3" />
-      <circle cx="23" cy="20" r="3" />
+      <circle cx="16" cy="9" r="3" />
+      <path d="M16 3.2V5M22.2 9H24M8 9h1.8M20.2 4.8l1.3-1.3M11.8 4.8 10.5 3.5" />
+      <path d="M4 22c2.2-2.2 4.3-2.2 6.5 0s4.3 2.2 6.5 0 4.3-2.2 6.5 0 4.3 2.2 4.5 0" />
+      <path d="M4 27c2.2-2.2 4.3-2.2 6.5 0s4.3 2.2 6.5 0 4.3-2.2 6.5 0 4.3 2.2 4.5 0" />
     </>
   ),
   map: (
@@ -209,7 +210,7 @@ export function Icon({ name, className = '', ...props }: { name: keyof typeof IC
 }
 
 /** Section heading: script title, optional small-caps subtitle, heart divider. */
-export function Heading({ title, subtitle, light = false }: { title: string; subtitle?: string; light?: boolean }) {
+export function Heading({ title, subtitle, detail, light = false }: { title: string; subtitle?: string; detail?: string; light?: boolean }) {
   return (
     <div className="text-center">
       <h2 data-reveal="blur" className={`script text-[52px] text-balance ${light ? 'text-cream' : 'text-navy'}`}>
@@ -218,6 +219,11 @@ export function Heading({ title, subtitle, light = false }: { title: string; sub
       {subtitle && (
         <p data-reveal="fade" data-delay="0.15" className={`eyebrow mt-1 text-balance ${light ? 'text-gold-light' : 'text-gold'}`}>
           {subtitle}
+        </p>
+      )}
+      {detail && (
+        <p data-reveal="fade" data-delay="0.2" className={`mt-2 font-serif text-[16px] text-balance italic ${light ? 'text-cream/80' : 'text-navy/70'}`}>
+          {detail}
         </p>
       )}
       <div data-reveal="fade" data-delay="0.25" className="mt-4">

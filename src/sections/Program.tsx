@@ -57,7 +57,7 @@ export function Program() {
 
   return (
     <section ref={root} className="relative px-5 pt-16 pb-16">
-      <Heading title={content.program.title} subtitle={content.program.subtitle} />
+      <Heading title={content.program.title} subtitle={content.program.subtitle} detail={content.date.long} />
 
       <div ref={track} className="relative mx-auto mt-10 max-w-[380px]" style={{ height }}>
         <svg viewBox={`0 0 ${width} ${height}`} className="absolute inset-0 h-full w-full overflow-visible" fill="none">

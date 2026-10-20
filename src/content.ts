@@ -23,8 +23,8 @@ const vi = {
     display: '22.12.2026',
     weekday: 'Thứ Ba',
     long: 'Thứ Ba, ngày 22 tháng 12 năm 2026',
-    // Guest arrival, Vietnam time.
-    start: '2026-12-22T15:30:00+07:00',
+    // Early room check-in, Vietnam time. Ceremony is later the same day.
+    start: '2026-12-22T12:00:00+07:00',
     end: '2026-12-22T21:30:00+07:00',
   },
 
@@ -65,11 +65,11 @@ const vi = {
     title: 'Chương trình',
     subtitle: 'Lịch trình trong ngày',
     items: [
-      { time: '15:30', title: 'Đón khách', note: 'Check-in & chụp ảnh lưu niệm', icon: 'welcome' },
+      { time: '12:00', title: 'Nhận phòng', note: 'Sớm nếu phòng sẵn sàng', icon: 'hotel' },
+      { time: '15:30', title: 'Đón khách', note: 'Chụp ảnh lưu niệm', icon: 'welcome' },
       { time: '16:45', title: 'Lễ thành hôn', note: 'Nghi lễ bên bờ vịnh', icon: 'rings' },
       { time: '17:30', title: 'Tiệc buffet', note: 'Cùng ngắm hoàng hôn trên biển', icon: 'dinner' },
-      // TẠM: xác nhận hoặc xoá.
-      { time: '19:30', title: 'Giao lưu & khiêu vũ', note: 'Âm nhạc và những điều bất ngờ', icon: 'music' },
+      { time: '19:30', title: 'Sinh hoạt tự do', note: 'Giao lưu, hoạt động tự chọn', icon: 'leisure' },
     ],
   },
 
@@ -204,10 +204,11 @@ const en = merge<Content>(vi, {
     title: 'Programme',
     subtitle: 'Schedule of the day',
     items: [
-      { title: 'Guest arrival', note: 'Check-in & photos' },
+      { title: 'Room check-in', note: 'Early if the room is ready' },
+      { title: 'Guest arrival', note: 'Photos together' },
       { title: 'Wedding ceremony', note: 'By the bay' },
       { title: 'Buffet dinner', note: 'Sunset over the sea' },
-      { title: 'Music & dancing', note: 'And a few surprises' },
+      { title: 'Free time', note: 'Mingle, optional activities' },
     ],
   },
 

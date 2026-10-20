@@ -13,7 +13,7 @@ export function Venue() {
   const root = useRef<HTMLElement>(null)
   const [calOpen, setCalOpen] = useState(false)
   useReveal(root)
-  const [arrival, ceremony] = content.program.items
+  const highlights = (['hotel', 'rings'] as const).map((icon) => content.program.items.find((it) => it.icon === icon)!)
   const [nameFirst, ...nameRest] = content.venue.name.split(' ')
 
   return (
@@ -32,10 +32,11 @@ export function Venue() {
           </div>
           <p className="font-serif text-[17px] text-navy">{content.date.long}</p>
           <div className="mt-4 grid grid-cols-2 divide-x divide-gold/40">
-            {[arrival, ceremony].map((it) => (
+            {highlights.map((it) => (
               <div key={it.time}>
                 <p className="eyebrow text-[11px] text-gold">{it.title}</p>
                 <p className="font-serif text-[30px] leading-tight text-gold">{it.time}</p>
+                {it.icon === 'hotel' && <p className="mt-1 font-serif text-[12px] leading-snug text-navy/55 italic">{it.note}</p>}
               </div>
             ))}
           </div>
