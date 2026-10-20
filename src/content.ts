@@ -75,11 +75,21 @@ const vi = {
 
   dressCode: {
     title: 'Trang phục',
-    style: 'Màu nào cũng được',
-    body: 'Bạn cứ mặc thanh lịch, thoải mái theo cách mình thích. Màu nào cũng hợp. Những sắc dưới đây chỉ là vài gợi ý.',
+    body: 'Bạn cứ mặc thanh lịch, thoải mái theo cách mình thích.',
+    highlight: 'Màu nào cũng được.',
+    hint: 'Những sắc màu dưới đây chỉ là gợi ý',
+    replay: 'Mở lại quạt màu',
     swatches: [
-      ['#1F2F6B', '#5E9EA8', '#A9D3D0', '#F7F1E8', '#FFFFFF'],
-      ['#2B2B2B', '#E04B4B', '#F4A6C4', '#F3D36B', '#67B36A'],
+      { hex: '#1F2F6B', name: 'Xanh navy' },
+      { hex: '#5E9EA8', name: 'Xanh ngọc' },
+      { hex: '#A9D3D0', name: 'Xanh biển' },
+      { hex: '#F7F1E8', name: 'Kem' },
+      { hex: '#FFFFFF', name: 'Trắng' },
+      { hex: '#2B2B2B', name: 'Đen' },
+      { hex: '#E04B4B', name: 'Đỏ' },
+      { hex: '#F4A6C4', name: 'Hồng' },
+      { hex: '#F3D36B', name: 'Vàng' },
+      { hex: '#67B36A', name: 'Xanh lá' },
     ],
   },
 
@@ -216,8 +226,22 @@ const en = merge<Content>(vi, {
 
   dressCode: {
     title: 'Dress code',
-    style: 'Any colour is welcome',
-    body: 'Dress elegantly and comfortably, however you like. Any colour suits the day. The shades below are only a few suggestions.',
+    body: 'Dress elegantly and comfortably, however you like.',
+    highlight: 'Any colour is welcome.',
+    hint: 'The shades below are only suggestions',
+    replay: 'Open the fan again',
+    swatches: [
+      { name: 'Navy' },
+      { name: 'Teal' },
+      { name: 'Aqua' },
+      { name: 'Cream' },
+      { name: 'White' },
+      { name: 'Black' },
+      { name: 'Red' },
+      { name: 'Pink' },
+      { name: 'Yellow' },
+      { name: 'Green' },
+    ],
   },
 
   gifts: {
