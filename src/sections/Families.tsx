@@ -1,7 +1,7 @@
 import { useRef } from 'react'
-import { useContent } from '../i18n'
 import { Heart, HeartDivider, Sprig } from '../fx/Ornaments'
 import { useReveal } from '../fx/useScrollAnim'
+import { useContent } from '../i18n'
 
 export function Families() {
   const content = useContent()
