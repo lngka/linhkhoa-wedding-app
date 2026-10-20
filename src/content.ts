@@ -76,8 +76,11 @@ const vi = {
   dressCode: {
     title: 'Trang phục',
     style: 'Màu nào cũng được',
-    body: 'Bạn cứ mặc thanh lịch, thoải mái theo cách mình thích. Nếu cần một gợi ý, những sắc biển dưới đây sẽ rất hợp.',
-    swatches: ['#1F2F6B', '#5E9EA8', '#A9D3D0', '#F7F1E8', '#FFFFFF'],
+    body: 'Bạn cứ mặc thanh lịch, thoải mái theo cách mình thích. Màu nào cũng hợp. Những sắc dưới đây chỉ là vài gợi ý.',
+    swatches: [
+      ['#1F2F6B', '#5E9EA8', '#A9D3D0', '#F7F1E8', '#FFFFFF'],
+      ['#2B2B2B', '#E04B4B', '#F4A6C4', '#F3D36B', '#67B36A'],
+    ],
   },
 
   gifts: {
@@ -214,7 +217,7 @@ const en = merge<Content>(vi, {
   dressCode: {
     title: 'Dress code',
     style: 'Any colour is welcome',
-    body: 'Dress elegantly and comfortably, however you like. If you would like a suggestion, the sea shades below will suit the day beautifully.',
+    body: 'Dress elegantly and comfortably, however you like. Any colour suits the day. The shades below are only a few suggestions.',
   },
 
   gifts: {

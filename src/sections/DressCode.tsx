@@ -18,15 +18,19 @@ export function DressCode() {
       <p data-reveal="up" className="mx-auto mt-6 max-w-[340px] font-serif text-[17px] leading-relaxed text-navy/80">
         {d.body}
       </p>
-      <div className="mt-7 flex justify-center gap-3">
-        {d.swatches.map((c, i) => (
-          <span
-            key={c}
-            data-reveal="scale"
-            data-delay={0.08 * i}
-            className="h-11 w-11 rounded-full border-2 border-gold/70 shadow-[inset_0_-6px_10px_rgb(0_0_0/0.12),0_6px_12px_-6px_rgb(31_47_107/0.5)]"
-            style={{ background: `radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.55), transparent 45%), ${c}` }}
-          />
+      <div className="mt-7 flex flex-col items-center gap-3">
+        {d.swatches.map((row, r) => (
+          <div key={r} className="flex justify-center gap-3">
+            {row.map((c, i) => (
+              <span
+                key={`${r}-${i}`}
+                data-reveal="scale"
+                data-delay={0.08 * (r * row.length + i)}
+                className="h-11 w-11 rounded-full border-2 border-gold/70 shadow-[inset_0_-6px_10px_rgb(0_0_0/0.12),0_6px_12px_-6px_rgb(31_47_107/0.5)]"
+                style={{ background: `radial-gradient(circle at 35% 30%, rgb(255 255 255 / 0.55), transparent 45%), ${c}` }}
+              />
+            ))}
+          </div>
         ))}
       </div>
     </section>

@@ -13,7 +13,7 @@ export function Heart(props: P) {
   )
 }
 
-/** Thin gold line — heart — line, as on the printed card. */
+/** Thin gold line, heart, line, as on the printed card. */
 export function HeartDivider({ className = '', width = 180 }: { className?: string; width?: number }) {
   return (
     <svg viewBox="0 0 180 14" width={width} className={`mx-auto text-gold ${className}`} fill="none" stroke="currentColor">

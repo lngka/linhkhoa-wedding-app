@@ -1,4 +1,4 @@
-// Minimal SW so the invite is installable. No caches — guests always get the latest HTML.
+// Minimal SW so the invite is installable. No caches: guests always get the latest HTML.
 self.addEventListener('install', () => {
   self.skipWaiting()
 })
