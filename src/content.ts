@@ -155,7 +155,7 @@ const vi = {
     program: true,
     dressCode: true,
     gifts: false,
-    travel: true,
+    travel: false,
   },
 }
 
