@@ -214,7 +214,12 @@
   50% { opacity: 1; }
 }
 
-.hg-spin { animation: hgSpin 7s ease-in-out infinite; }
+.hg-spin {
+  animation: hgSpin 7s ease-in-out infinite;
+  /* fill-box, not view-box: Chrome treats view-box origin as CSS px and the flip drifts. */
+  transform-box: fill-box;
+  transform-origin: center;
+}
 .hg-sand-top { animation: hgTop 7s linear infinite; }
 .hg-sand-bot { animation: hgBot 7s linear infinite; }
 .hg-stream { animation: hgStream 0.5s linear infinite, hgStreamShow 7s step-end infinite; }

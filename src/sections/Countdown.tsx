@@ -26,7 +26,7 @@ export function Countdown() {
     <section id="countdown" ref={root} className="relative px-6 pt-16 pb-24 text-center">
       <div data-reveal="scale" className="flex items-center justify-center gap-3">
         <span className="h-px w-16 bg-gradient-to-r from-transparent to-gold" />
-        <Hourglass className="h-24 w-16" />
+        <Hourglass className="h-24 w-auto" />
         <span className="h-px w-16 bg-gradient-to-l from-transparent to-gold" />
       </div>
       <h2 data-reveal="blur" className="script mt-4 text-[52px] text-navy">

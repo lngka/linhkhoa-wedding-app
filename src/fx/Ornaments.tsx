@@ -83,15 +83,16 @@ export function Seal({ left, right, className = '' }: { left: string; right: str
   )
 }
 
-/** Gold hourglass with sand that drains and flips. */
+/** Gold hourglass with sand that drains and flips.
+ *  viewBox is centered on the glass and wider than the drawing so the 180° flip isn't clipped. */
 export function Hourglass({ className = '' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 80 120" className={className} fill="none">
+    <svg viewBox="-24 0 128 120" className={className} fill="none">
       <defs>
         <clipPath id="hg-top"><path d="M20 18H60C60 40 44 50 41 60H39C36 50 20 40 20 18Z" /></clipPath>
         <clipPath id="hg-bot"><path d="M39 60H41C44 70 60 80 60 102H20C20 80 36 70 39 60Z" /></clipPath>
       </defs>
-      <g className="hg-spin" style={{ transformOrigin: '40px 60px' }}>
+      <g className="hg-spin">
         <g clipPath="url(#hg-top)">
           <rect className="hg-sand-top" x="18" y="18" width="44" height="42" fill="#d9b779" />
         </g>
