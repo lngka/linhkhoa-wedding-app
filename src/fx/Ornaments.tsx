@@ -1,5 +1,5 @@
 import type { ReactNode, SVGProps } from 'react'
-import type { ProgramIcon } from '../content'
+import type { ProgramIcon, VenueIcon } from '../content'
 
 type P = SVGProps<SVGSVGElement>
 
@@ -111,7 +111,19 @@ export function Hourglass({ className = '' }: { className?: string }) {
 }
 
 const ICONS: Record<
-  ProgramIcon | 'map' | 'calendar' | 'gift' | 'car' | 'hotel' | 'shirt' | 'speaker' | 'speaker-low' | 'speaker-off' | 'mail' | 'close',
+  | ProgramIcon
+  | VenueIcon
+  | 'map'
+  | 'calendar'
+  | 'gift'
+  | 'car'
+  | 'hotel'
+  | 'shirt'
+  | 'speaker'
+  | 'speaker-low'
+  | 'speaker-off'
+  | 'mail'
+  | 'close',
   ReactNode
 > = {
   welcome: (
@@ -141,6 +153,65 @@ const ICONS: Record<
       <path d="M16 3.2V5M22.2 9H24M8 9h1.8M20.2 4.8l1.3-1.3M11.8 4.8 10.5 3.5" />
       <path d="M4 22c2.2-2.2 4.3-2.2 6.5 0s4.3 2.2 6.5 0 4.3-2.2 6.5 0 4.3 2.2 4.5 0" />
       <path d="M4 27c2.2-2.2 4.3-2.2 6.5 0s4.3 2.2 6.5 0 4.3-2.2 6.5 0 4.3 2.2 4.5 0" />
+    </>
+  ),
+  onsen: (
+    <>
+      <path d="M6 22c2 3 5 4 10 4s8-1 10-4" />
+      <path d="M8 22c1.5-2.5 4-4 8-4s6.5 1.5 8 4" />
+      <path d="M12 10c0-2 1.5-3.5 1.5-5.5M16 8c0-2 1.5-3 1.5-5M20 10c0-2 1.5-3.5 1.5-5.5" />
+    </>
+  ),
+  token: (
+    <>
+      <circle cx="16" cy="16" r="10" />
+      <circle cx="16" cy="16" r="6.5" />
+      <path d="M16 11.5v9M13.5 14.5c.6-1 1.5-1.5 2.5-1.5s1.9.5 2.5 1.5M13.5 17.5c.6 1 1.5 1.5 2.5 1.5s1.9-.5 2.5-1.5" />
+    </>
+  ),
+  tea: (
+    <>
+      <path d="M8 12h12v8a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4z" />
+      <path d="M20 14h2.5a2.5 2.5 0 0 1 0 5H20" />
+      <path d="M7 28h14M12 8c0-1.5 1-2.5 1-4M16 7c0-1.5 1-2 1-3.5" />
+    </>
+  ),
+  pool: (
+    <>
+      <path d="M5 20c2.2-2 4.3-2 6.5 0s4.3 2 6.5 0 4.3-2 6.5 0" />
+      <path d="M5 25c2.2-2 4.3-2 6.5 0s4.3 2 6.5 0 4.3-2 6.5 0" />
+      <circle cx="11" cy="11" r="3.5" />
+      <path d="M14 12.5 22 8" />
+    </>
+  ),
+  fitness: (
+    <>
+      <path d="M6 12v8M10 10v12M22 12v8M26 10v12" />
+      <path d="M6 16h4M22 16h4M10 16h12" />
+    </>
+  ),
+  kids: (
+    <>
+      <circle cx="16" cy="10" r="4" />
+      <path d="M10 26c1-5 3.5-7 6-7s5 2 6 7" />
+      <path d="M8 16c2-1 4-.5 5 1M24 16c-2-1-4-.5-5 1" />
+    </>
+  ),
+  wifi: (
+    <>
+      <path d="M6 14c5.5-5 14.5-5 20 0" />
+      <path d="M9.5 18c3.5-3.5 9.5-3.5 13 0" />
+      <path d="M13 22c1.7-1.7 4.3-1.7 6 0" />
+      <circle cx="16" cy="26" r="1.4" fill="currentColor" stroke="none" />
+    </>
+  ),
+  shuttle: (
+    <>
+      <path d="M5 18h18l3 5v3H5z" />
+      <path d="M8 18V12h10l3 6" />
+      <circle cx="10" cy="26" r="2" />
+      <circle cx="22" cy="26" r="2" />
+      <path d="M5 21h18" />
     </>
   ),
   map: (

@@ -1,5 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import { downloadIcs, googleCalendarUrl } from '../lib/calendar'
 import { useContent } from '../i18n'
 import { Heading, Heart, Icon } from '../fx/Ornaments'
 import { useReveal } from '../fx/useScrollAnim'
@@ -23,6 +24,7 @@ export function Program() {
   const items = content.program.items
   const height = items.length * ROW
   const [width, setWidth] = useState(360)
+  const [calOpen, setCalOpen] = useState(false)
   useReveal(root)
 
   useLayoutEffect(() => {
@@ -100,6 +102,37 @@ export function Program() {
         })}
       </div>
       <Heart data-reveal="scale" className="mx-auto mt-2 h-5 text-sea" />
+
+      <div data-reveal="up" className="relative mt-8 flex justify-center">
+        <div className="relative">
+          <button type="button" onClick={() => setCalOpen((v) => !v)} className="btn btn-outline" aria-expanded={calOpen}>
+            <Icon name="calendar" className="h-4 w-4" /> {content.ui.addToCalendar}
+          </button>
+          {calOpen && (
+            <div className="absolute top-full left-1/2 z-10 mt-2 w-52 -translate-x-1/2 overflow-hidden rounded-xl border border-gold/40 bg-cream text-left shadow-xl">
+              <a
+                href={googleCalendarUrl(content)}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setCalOpen(false)}
+                className="block px-4 py-3 font-serif text-[16px] text-navy hover:bg-cream-deep"
+              >
+                Google Calendar
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  downloadIcs(content)
+                  setCalOpen(false)
+                }}
+                className="block w-full border-t border-gold/30 px-4 py-3 text-left font-serif text-[16px] text-navy hover:bg-cream-deep"
+              >
+                Apple / Outlook (.ics)
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     </section>
   )
 }

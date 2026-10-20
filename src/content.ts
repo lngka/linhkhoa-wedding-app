@@ -29,12 +29,48 @@ const vi = {
   },
 
   venue: {
-    title: 'Lễ cưới & Tiệc',
+    title: 'Địa điểm',
     subtitle: 'Nơi hẹn ước trăm năm',
     name: 'Flamingo Cát Bà Resort',
     area: 'Vịnh Lan Hạ',
     city: 'Cát Bà, Hải Phòng',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Flamingo+Cat+Ba+Resort',
+    stay: {
+      title: 'Kỳ nghỉ tại resort',
+      intro: 'Dành cho khách lưu trú trong gói phòng cưới — đã gồm những điều dưới đây.',
+      gifts: [
+        {
+          icon: 'dinner' as const,
+          title: 'Bữa ăn',
+          text: 'Một bữa tối, một bữa trưa, một bữa sáng và một set trà chiều tại nhà hàng resort.',
+        },
+        {
+          icon: 'onsen' as const,
+          title: 'Onsen',
+          text: 'Tặng onsen theo tiêu chuẩn phòng.',
+        },
+        {
+          icon: 'token' as const,
+          title: 'Khu vui chơi',
+          text: 'Tặng 10 xèng game.',
+        },
+      ],
+      includedLabel: 'Trong gói phòng',
+      included: [
+        { icon: 'tea' as const, text: 'Trà, cà phê, nước suối trong phòng' },
+        { icon: 'pool' as const, text: 'Bể bơi' },
+        { icon: 'fitness' as const, text: 'Phòng tập' },
+        { icon: 'kids' as const, text: 'Kid Club' },
+        { icon: 'wifi' as const, text: 'Internet và truyền hình' },
+        { icon: 'shuttle' as const, text: 'Xe điện trong khu, 6:00–22:00' },
+      ],
+      perksLabel: 'Ưu đãi thêm',
+      perks: [
+        'Massage và tắm khoáng giảm 20%',
+        'Làm đẹp giảm 15% — chăm sóc da, gội đầu, móng tay và móng chân',
+        'Karaoke giảm 200.000đ khi hóa đơn từ 800.000đ',
+      ],
+    },
   },
 
   // Loops after the guest opens the invitation. null hides the control.
@@ -162,6 +198,9 @@ const vi = {
 export type Content = typeof vi
 export type Lang = 'vi' | 'en'
 export type ProgramIcon = Content['program']['items'][number]['icon']
+export type VenueIcon =
+  | Content['venue']['stay']['gifts'][number]['icon']
+  | Content['venue']['stay']['included'][number]['icon']
 
 type DeepPartial<T> = T extends readonly (infer U)[] ? DeepPartial<U>[] : T extends object ? { [K in keyof T]?: DeepPartial<T[K]> } : T
 
@@ -192,10 +231,43 @@ const en = merge<Content>(vi, {
   },
 
   venue: {
-    title: 'Ceremony & Reception',
+    title: 'The venue',
     subtitle: 'Where we say "I do"',
     area: 'Lan Ha Bay',
     city: 'Cat Ba, Hai Phong',
+    stay: {
+      title: 'Your stay at the resort',
+      intro: 'For overnight wedding guests — already included in your room package.',
+      gifts: [
+        {
+          title: 'Meals',
+          text: 'One dinner, one lunch, one breakfast, and an afternoon tea set at the resort restaurant.',
+        },
+        {
+          title: 'Onsen',
+          text: 'Complimentary onsen with your room.',
+        },
+        {
+          title: 'Games',
+          text: 'Ten game tokens on us.',
+        },
+      ],
+      includedLabel: 'In your room package',
+      included: [
+        { text: 'Tea, coffee and bottled water in the room' },
+        { text: 'Swimming pool' },
+        { text: 'Fitness centre' },
+        { text: 'Kid Club' },
+        { text: 'Wi‑Fi and cable TV' },
+        { text: 'Resort shuttle, 6:00–22:00' },
+      ],
+      perksLabel: 'Extra perks',
+      perks: [
+        '20% off massage and mineral baths',
+        '15% off beauty — facials, hair wash, manicure and pedicure',
+        'VND 200,000 off karaoke when the bill is VND 800,000 or more',
+      ],
+    },
   },
 
   hero: { button: 'Open' },
