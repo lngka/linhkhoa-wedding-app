@@ -75,9 +75,8 @@ const vi = {
 
   dressCode: {
     title: 'Trang phục',
-    style: 'Thanh lịch · Sắc màu biển',
-    // TẠM
-    body: 'Chúng mình rất vui nếu bạn chọn trang phục thanh lịch với gam màu của biển cả: xanh navy, xanh ngọc, kem hoặc trắng.',
+    style: 'Màu nào cũng được',
+    body: 'Bạn cứ mặc thanh lịch, thoải mái theo cách mình thích. Nếu cần một gợi ý, những sắc biển dưới đây sẽ rất hợp.',
     swatches: ['#1F2F6B', '#5E9EA8', '#A9D3D0', '#F7F1E8', '#FFFFFF'],
   },
 
@@ -107,7 +106,7 @@ const vi = {
       name: 'Flamingo Cát Bà Resort',
       lines: ['Nghỉ dưỡng tại resort view biển', 'Full pension + Buffet', 'Thời gian bên nhau và nhiều kỷ niệm đẹp'],
       datesLabel: 'Thời gian',
-      dates: '21 – 23.12.2026', // TẠM
+      dates: '22 – 23.12.2026',
     },
   },
 
@@ -214,8 +213,8 @@ const en = merge<Content>(vi, {
 
   dressCode: {
     title: 'Dress code',
-    style: 'Elegant · Colours of the sea',
-    body: "We'd love to see you in elegant attire in the colours of the sea: navy, turquoise, cream or white.",
+    style: 'Any colour is welcome',
+    body: 'Dress elegantly and comfortably, however you like. If you would like a suggestion, the sea shades below will suit the day beautifully.',
   },
 
   gifts: {

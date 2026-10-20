@@ -42,6 +42,6 @@ Stack: Vite 8, React 19, TypeScript, Tailwind v4 (`@tailwindcss/vite`, tokens in
 - Real wedding photo for scratch reveal (currently AI placeholder `couple.webp`).
 - Confirm program items 17:30 and 19:30 (only 15:30 arrival and 16:45 ceremony + buffet come from the card).
 - Gifts: bank names, account numbers, QR images — or disable the section.
-- Travel route text and stay dates (21–23.12.2026) need verification.
+- Travel route text still needs verification. Stay dates are confirmed: check-in 22.12, check-out 23.12.
 - Set `VITE_SITE_URL` in `.env` after deploying so OG previews work on Zalo/Messenger.
 - Not a git repo yet.

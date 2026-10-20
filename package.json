@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "assets": "node scripts/build-assets.mjs"
+    "assets": "node scripts/build-assets.mjs && node scripts/build-icons.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.0",
