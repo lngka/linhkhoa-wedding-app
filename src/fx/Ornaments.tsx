@@ -109,7 +109,10 @@ export function Hourglass({ className = '' }: { className?: string }) {
   )
 }
 
-const ICONS: Record<ProgramIcon | 'map' | 'calendar' | 'gift' | 'car' | 'hotel' | 'shirt' | 'speaker' | 'speaker-low' | 'speaker-off', ReactNode> = {
+const ICONS: Record<
+  ProgramIcon | 'map' | 'calendar' | 'gift' | 'car' | 'hotel' | 'shirt' | 'speaker' | 'speaker-low' | 'speaker-off' | 'mail' | 'top',
+  ReactNode
+> = {
   welcome: (
     <>
       <path d="M5 11h22v15H5z" />
@@ -199,6 +202,13 @@ const ICONS: Record<ProgramIcon | 'map' | 'calendar' | 'gift' | 'car' | 'hotel' 
       <path d="M21 13l7 7M28 13l-7 7" />
     </>
   ),
+  mail: (
+    <>
+      <rect x="4" y="8" width="24" height="16" rx="2" />
+      <path d="M4 10l12 9 12-9" />
+    </>
+  ),
+  top: <path d="M16 25V8M9 14l7-7 7 7" />,
 }
 
 export function Icon({ name, className = '', ...props }: { name: keyof typeof ICONS } & P) {

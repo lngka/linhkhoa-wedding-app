@@ -127,6 +127,10 @@ const vi = {
     closing: 'Rất hân hạnh được đón tiếp!',
     thanks: 'Cảm ơn bạn đã là một phần trong câu chuyện của chúng mình.',
     bayAlt: 'Vịnh Lan Hạ',
+    install: 'Cài thiệp',
+    top: 'Về đầu trang',
+    contact: 'Liên hệ',
+    creditEmail: 'ck@ck-nguyen.com',
   },
 
   calendarTitle: 'Đám cưới Công Khoa & Phương Linh',
@@ -270,6 +274,9 @@ const en = merge<Content>(vi, {
     closing: 'We look forward to welcoming you!',
     thanks: 'Thank you for being part of our story.',
     bayAlt: 'Lan Ha Bay',
+    install: 'Install invite',
+    top: 'Back to top',
+    contact: 'Contact',
   },
 
   calendarTitle: 'Wedding of Công Khoa & Phương Linh',

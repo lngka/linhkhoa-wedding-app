@@ -19,6 +19,11 @@ export const scrollToEl = (el: Element | null) => {
   else el.scrollIntoView({ behavior: 'smooth' })
 }
 
+export const scrollToTop = () => {
+  if (lenis) lenis.scrollTo(0, { duration: 1.6 })
+  else window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
 export function useSmoothScroll() {
   // Lazy images change the page height; keep trigger positions in sync.
   useEffect(() => {
