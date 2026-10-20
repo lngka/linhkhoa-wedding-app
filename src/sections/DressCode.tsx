@@ -42,11 +42,11 @@ export function DressCode() {
   const root = useRef<HTMLElement>(null)
   const fan = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState<number | null>(null)
-  const [opened, setOpened] = useState(false)
   const [canReplay, setCanReplay] = useState(false)
   const [order, setOrder] = useState(() => d.swatches.map((_, i) => i))
   const played = useRef(false)
   const pendingShuffle = useRef(false)
+  const busy = useRef(false)
   useReveal(root)
 
   useLayoutEffect(() => {
@@ -64,11 +64,9 @@ export function DressCode() {
           ease: 'power2.out',
           stagger: { each: 0.012, from: 'center' },
           overwrite: true,
-          onComplete: () => setOpened(true),
         })
       } else {
         gsap.set(blades, { rotate: (i: number) => angles[i] })
-        setOpened(true)
       }
     }
 
@@ -106,14 +104,16 @@ export function DressCode() {
       ease: 'power2.out',
       stagger: { each: 0.012, from: 'center' },
       overwrite: true,
-      onComplete: () => setOpened(true),
+      onComplete: () => {
+        busy.current = false
+      },
     })
   }, [order])
 
   const replay = () => {
     const blades = fan.current?.querySelectorAll<HTMLElement>('.dc-blade')
-    if (!blades?.length || reducedMotion()) return
-    setOpened(false)
+    if (!blades?.length || reducedMotion() || busy.current) return
+    busy.current = true
     setActive(null)
     gsap.to(blades, {
       rotate: 0,
@@ -196,7 +196,7 @@ export function DressCode() {
       <p data-reveal="fade" className="mx-auto max-w-[300px] font-serif text-[14px] leading-relaxed text-navy/55 italic">
         {d.hint}
       </p>
-      {canReplay && opened && (
+      {canReplay && (
         <button
           type="button"
           onClick={replay}
