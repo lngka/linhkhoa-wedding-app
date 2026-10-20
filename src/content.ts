@@ -102,8 +102,8 @@ const vi = {
     items: [
       { time: '12:00', title: 'Nhận phòng', note: 'Sớm nếu phòng sẵn sàng', icon: 'hotel' },
       { time: '15:30', title: 'Đón khách', note: 'Chụp ảnh lưu niệm', icon: 'welcome' },
-      { time: '16:45', title: 'Lễ thành hôn', note: 'Nghi lễ bên bờ vịnh', icon: 'rings' },
-      { time: '17:30', title: 'Tiệc buffet', note: 'Cùng ngắm hoàng hôn trên biển', icon: 'dinner' },
+      { time: '16:45', title: 'Lễ thành hôn', note: 'Ngoài trời, Sky Bar tầng 17', icon: 'rings' },
+      { time: '17:30', title: 'Tiệc buffet', note: 'Lan Hạ Sky Bar, tầng 17', icon: 'dinner' },
       { time: '19:30', title: 'Sinh hoạt tự do', note: 'Giao lưu, hoạt động tự chọn', icon: 'leisure' },
     ],
   },
@@ -292,8 +292,8 @@ const en = merge<Content>(vi, {
     items: [
       { title: 'Room check-in', note: 'Early if the room is ready' },
       { title: 'Guest arrival', note: 'Photos together' },
-      { title: 'Wedding ceremony', note: 'By the bay' },
-      { title: 'Buffet dinner', note: 'Sunset over the sea' },
+      { title: 'Wedding ceremony', note: 'Outdoors, Sky Bar, 17th floor' },
+      { title: 'Buffet dinner', note: 'Lan Ha Sky Bar, 17th floor' },
       { title: 'Free time', note: 'Mingle, optional activities' },
     ],
   },
