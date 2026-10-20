@@ -53,8 +53,7 @@ const vi = {
     text: ['Sự hiện diện của bạn là món quà ý nghĩa nhất.', 'Chúng mình rất mong được gặp bạn!'],
     hint: 'Cào để xem',
     help: 'Dùng ngón tay cào lên khung kính',
-    // TẠM: thay bằng ảnh cưới thật (ảnh dọc, khoảng 640x850).
-    photo: asset('couple.webp'),
+    photo: asset('wedding-jack.webp'),
   },
 
   welcome: {

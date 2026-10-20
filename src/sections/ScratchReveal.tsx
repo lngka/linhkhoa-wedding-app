@@ -6,9 +6,9 @@ import { GlassShimmer } from '../fx/GlassShimmer'
 import { GoldDust, type GoldDustHandle } from '../fx/GoldDust'
 import { useReveal } from '../fx/useScrollAnim'
 
-const OVAL = asset('oval.webp')
-// Transparent inner hole of oval.webp as % of the image box, grown slightly to tuck under the frame.
-const INNER = { left: 18.1, top: 20.4, width: 64.9, height: 59.8 }
+const FRAME = asset('frame-wide.webp')
+// Transparent inner hole of frame-wide.webp as % of the image box, grown slightly to tuck under the gold rim.
+const INNER = { left: 5.8, top: 7.8, width: 88.3, height: 84.8 }
 const REVEAL_AT = 0.5
 
 export function ScratchReveal() {
@@ -90,8 +90,8 @@ export function ScratchReveal() {
         total++
         if (data[i] < 40) clear++
       }
-      // The canvas is clipped to an ellipse (~78.5% of its box).
-      if (clear / total > REVEAL_AT * 0.785) finish()
+      // The canvas is clipped to a rounded rect (~90% of its box).
+      if (clear / total > REVEAL_AT * 0.9) finish()
     }
     const finish = () => {
       done = true
@@ -146,21 +146,21 @@ export function ScratchReveal() {
           </p>
         ))}
 
-        <div ref={frameRef} data-reveal="scale" className="relative mx-auto mt-10 w-[82%] max-w-[340px]" style={{ aspectRatio: '649 / 1049' }}>
+        <div ref={frameRef} data-reveal="scale" className="relative mx-auto mt-10 w-[94%] max-w-[460px]" style={{ aspectRatio: '1087 / 781' }}>
           <div
-            className="absolute overflow-hidden rounded-[50%]"
+            className="absolute overflow-hidden rounded-[17%/25%]"
             style={{ left: `${INNER.left}%`, top: `${INNER.top}%`, width: `${INNER.width}%`, height: `${INNER.height}%` }}
           >
             <img
               src={content.scratch.photo}
               alt={`${content.groom.short} & ${content.bride.short}`}
               loading="lazy"
-              className={`h-full w-full object-cover transition-transform duration-[2500ms] ease-out ${revealed ? 'scale-100' : 'scale-110'}`}
+              className={`h-full w-full origin-top object-cover object-[center_12%] transition-transform duration-[2500ms] ease-out ${revealed ? 'scale-100' : 'scale-105'}`}
             />
             <canvas ref={canvasRef} className="absolute inset-0 h-full w-full cursor-crosshair touch-none" aria-label={content.scratch.hint} />
           </div>
-          <img src={OVAL} alt="" loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full drop-shadow-[0_18px_30px_rgb(0_0_0/0.45)]" />
-          <GlassShimmer src={OVAL} />
+          <img src={FRAME} alt="" loading="lazy" className="pointer-events-none absolute inset-0 h-full w-full drop-shadow-[0_18px_30px_rgb(0_0_0/0.45)]" />
+          <GlassShimmer src={FRAME} />
         </div>
         <p className={`eyebrow mt-6 text-[11px] text-gold-light transition-opacity duration-700 ${revealed ? 'opacity-0' : 'opacity-100'}`}>
           {content.scratch.help}
