@@ -59,9 +59,9 @@ export function Hero({ opened }: { opened: boolean }) {
 
         <div className="absolute inset-x-[19%] top-[17%] bottom-[25%] flex flex-col items-center justify-center text-center">
           <h1 className="text-navy">
-            <span className="hero-write script block text-[clamp(34px,10vw,46px)]">{content.groom.short}</span>
-            <span className="hero-fade script block text-[30px] text-gold">&amp;</span>
             <span className="hero-write script block text-[clamp(34px,10vw,46px)]">{content.bride.short}</span>
+            <span className="hero-fade script block text-[30px] text-gold">&amp;</span>
+            <span className="hero-write script block text-[clamp(34px,10vw,46px)]">{content.groom.short}</span>
           </h1>
           <p className="hero-fade mt-2 font-serif text-[14px] italic text-navy/80">{content.invitationLines[0]}</p>
 

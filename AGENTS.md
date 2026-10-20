@@ -33,7 +33,7 @@ Stack: Vite 8, React 19, TypeScript, Tailwind v4 (`@tailwindcss/vite`, tokens in
 - **Program SVG** is drawn at real pixel width (ResizeObserver). Don't reintroduce `preserveAspectRatio="none"` + `vector-effect` - dashes break in Chrome.
 - **ScrollTrigger positions** go stale as lazy images load; `useSmoothScroll` refreshes on body height change. Keep it.
 - **Scratch canvas** sizes from `offsetWidth/offsetHeight` (not `getBoundingClientRect`) because the reveal animation scales the parent. Inner hole of `oval.webp` is in `INNER` (percent of image box); re-measure if the oval art changes.
-- **Gate**: owner wants it simple - the seal just fades, the doors open, then the gate fades into the page. No spinning/shrinking seal, no envelope/card-pull effects (tried and rejected as "try hard"). The `K&L` in `Seal` is optically centred with measured `MONO_DX/MONO_DY` (Great Vibes ink is offset from its advance box); re-measure if the font or letters change.
+- **Gate**: owner wants it simple - the seal just fades, the doors open, then the gate fades into the page. No spinning/shrinking seal, no envelope/card-pull effects (tried and rejected as "try hard"). The `L&K` in `Seal` is optically centred with measured `MONO_DX/MONO_DY` (Great Vibes ink is offset from its advance box); re-measure if the font or letters change.
 - **Language switch keeps DOM nodes**: key translated lists by index, not by text, or switching remounts them and they lose their scroll-reveal state. The scratch canvas repaints its hint on switch only if the guest hasn't scratched yet.
 - **Browser testing**: with Lenis active, `window.scrollTo` gets overridden - scroll via Lenis instead (temporarily expose it on `window` in DEV; remove afterwards).
 

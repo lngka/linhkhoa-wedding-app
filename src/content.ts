@@ -7,14 +7,14 @@ export const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name
 const vi = {
   lang: 'vi',
 
-  monogram: { left: 'K', right: 'L' },
+  monogram: { left: 'L', right: 'K' },
 
   groom: { full: 'Nguyễn Võ Công Khoa', short: 'Công Khoa' },
   bride: { full: 'Nguyễn Phương Linh', short: 'Phương Linh' },
 
   families: {
-    groom: { label: 'Nhà trai', parents: ['Nguyễn Văn Phụng', 'Võ Lệ Thu'] },
-    bride: { label: 'Nhà gái', parents: ['Nguyễn Kim Minh', 'Dương Minh Nguyệt'] },
+    groom: { label: 'Nhà trai', parents: ['Võ Lệ Thu', 'Nguyễn Văn Phụng'] },
+    bride: { label: 'Nhà gái', parents: ['Dương Minh Nguyệt', 'Nguyễn Kim Minh'] },
   },
 
   invitationLines: ['Trân trọng kính mời', 'quý khách và gia đình', 'đến dự lễ thành hôn của hai con'],
@@ -132,13 +132,13 @@ const vi = {
     title: 'Mừng cưới',
     subtitle: 'Sự hiện diện của bạn là món quà quý nhất',
     body: 'Nếu bạn muốn gửi lời chúc phúc từ xa, chúng mình xin trân trọng đón nhận qua thông tin dưới đây.',
-    roles: ['Chú rể', 'Cô dâu'],
+    roles: ['Cô dâu', 'Chú rể'],
     copy: 'Chạm để sao chép',
     copied: 'Đã sao chép ♡',
     // TẠM: điền thông tin thật, hoặc tắt section này ở `sections`.
     accounts: [
-      { owner: 'Nguyễn Võ Công Khoa', bank: 'Ngân hàng ...', number: '0000 000 000', qr: null as string | null },
       { owner: 'Nguyễn Phương Linh', bank: 'Ngân hàng ...', number: '0000 000 000', qr: null as string | null },
+      { owner: 'Nguyễn Võ Công Khoa', bank: 'Ngân hàng ...', number: '0000 000 000', qr: null as string | null },
     ],
   },
 
@@ -168,7 +168,7 @@ const vi = {
     creditEmail: 'ck@ck-nguyen.com',
   },
 
-  calendarTitle: 'Đám cưới Công Khoa & Phương Linh',
+  calendarTitle: 'Đám cưới Phương Linh & Công Khoa',
 
   ui: {
     directions: 'Chỉ đường',
@@ -322,7 +322,7 @@ const en = merge<Content>(vi, {
     title: 'Wedding gifts',
     subtitle: 'Your presence is the greatest gift',
     body: 'If you would like to send your wishes from afar, we gratefully welcome them via the details below.',
-    roles: ['Groom', 'Bride'],
+    roles: ['Bride', 'Groom'],
     copy: 'Tap to copy',
     copied: 'Copied ♡',
   },
@@ -349,7 +349,7 @@ const en = merge<Content>(vi, {
     contact: 'Contact',
   },
 
-  calendarTitle: 'Wedding of Công Khoa & Phương Linh',
+  calendarTitle: 'Wedding of Phương Linh & Công Khoa',
 
   ui: {
     directions: 'Directions',

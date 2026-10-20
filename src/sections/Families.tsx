@@ -29,20 +29,20 @@ export function Families() {
         <HeartDivider />
       </div>
       <p data-reveal="blur" className="script mt-3 text-[38px] text-navy">
-        {content.groom.full}
+        {content.bride.full}
       </p>
       <p data-reveal="fade" className="script text-[34px] text-gold">
         &amp;
       </p>
       <p data-reveal="blur" className="script text-[38px] text-navy">
-        {content.bride.full}
+        {content.groom.full}
       </p>
       <div data-reveal="fade" className="mt-3">
         <HeartDivider />
       </div>
 
       <div data-reveal="up" className="mx-auto mt-10 grid max-w-[360px] grid-cols-[1fr_auto_1fr] items-start gap-3">
-        {[groom, null, bride].map((fam, i) =>
+        {[bride, null, groom].map((fam, i) =>
           fam ? (
             <div key={i}>
               <p className="eyebrow text-navy">{fam.label}</p>

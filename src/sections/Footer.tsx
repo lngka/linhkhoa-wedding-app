@@ -23,13 +23,13 @@ export function Footer({ onClose }: { onClose: () => void }) {
       <GoldDust count={24} />
       <div className="relative px-6">
         <p data-reveal="blur" className="script text-[56px] leading-none text-navy">
-          {content.groom.short}
+          {content.bride.short}
         </p>
         <p data-reveal="fade" className="script text-[36px] text-gold">
           &amp;
         </p>
         <p data-reveal="blur" className="script text-[56px] leading-none text-navy">
-          {content.bride.short}
+          {content.groom.short}
         </p>
         <p data-reveal="fade" className="eyebrow mt-4 text-gold">
           {content.date.display}

@@ -1,4 +1,4 @@
-// Rasterize the navy/gold K&L badge into PWA icons.
+// Rasterize the navy/gold L&K badge into PWA icons.
 import { mkdir } from 'node:fs/promises'
 import sharp from 'sharp'
 
@@ -11,7 +11,7 @@ function badgeSvg(size) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
     <circle cx="${c}" cy="${c}" r="${size * 0.47}" fill="#1F2F6B" stroke="#B8894A" stroke-width="${size * 0.047}"/>
     <circle cx="${c}" cy="${c}" r="${size * 0.375}" fill="none" stroke="#B8894A" stroke-width="${size * 0.016}"/>
-    <text x="${c}" y="${c + font * 0.36}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="${font}" fill="#F7F1E8">K&amp;L</text>
+    <text x="${c}" y="${c + font * 0.36}" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="${font}" fill="#F7F1E8">L&amp;K</text>
   </svg>`
 }
 

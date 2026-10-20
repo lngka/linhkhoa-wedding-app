@@ -45,8 +45,8 @@ export function Sprig({ className = '', ...props }: P) {
   )
 }
 
-// Great Vibes ink sits right of and above its advance box; measured offsets that optically centre "K&L".
-const MONO_DX = -5
+// Great Vibes ink sits right of and above its advance box; measured offsets that optically centre "L&K".
+const MONO_DX = -10
 const MONO_DY = 5
 
 /** Wax-seal style monogram for the gate. */

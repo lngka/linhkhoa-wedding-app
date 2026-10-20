@@ -153,7 +153,7 @@ export function ScratchReveal() {
           >
             <img
               src={content.scratch.photo}
-              alt={`${content.groom.short} & ${content.bride.short}`}
+              alt={`${content.bride.short} & ${content.groom.short}`}
               loading="lazy"
               className={`h-full w-full origin-top object-cover object-[center_12%] transition-transform duration-[2500ms] ease-out ${revealed ? 'scale-100' : 'scale-105'}`}
             />
