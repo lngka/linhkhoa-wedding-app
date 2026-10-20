@@ -23,8 +23,18 @@ export function Hero({ opened }: { opened: boolean }) {
   }, [])
 
   useEffect(() => {
-    if (!opened) return
+    if (!opened) {
+      const ctx = gsap.context(() => {
+        gsap.set('.hero-arch', { scale: 1.08, opacity: 0 })
+        gsap.set('.hero-fade', { opacity: 0, y: 14 })
+        gsap.set('.hero-write', { clipPath: 'inset(-20% 100% -20% 0)' })
+      }, root)
+      return () => ctx.revert()
+    }
     const ctx = gsap.context(() => {
+      gsap.set('.hero-arch', { scale: 1.08, opacity: 0 })
+      gsap.set('.hero-fade', { opacity: 0, y: 14 })
+      gsap.set('.hero-write', { clipPath: 'inset(-20% 100% -20% 0)' })
       gsap
         .timeline({ delay: 0.9 })
         .to('.hero-arch', { scale: 1, opacity: 1, duration: 1.8, ease: 'power2.out' })

@@ -2,12 +2,12 @@ import { useRef, useState } from 'react'
 import { LangSwitch } from './fx/LangSwitch'
 import { MusicControl, type MusicControlHandle } from './fx/MusicControl'
 import { useContent } from './i18n'
-import { useSmoothScroll } from './fx/useScrollAnim'
+import { scrollToTop, useSmoothScroll } from './fx/useScrollAnim'
 import { Countdown } from './sections/Countdown'
 import { DressCode } from './sections/DressCode'
 import { Families } from './sections/Families'
 import { Footer } from './sections/Footer'
-import { Gate } from './sections/Gate'
+import { Gate, type GateHandle } from './sections/Gate'
 import { Gifts } from './sections/Gifts'
 import { Hero } from './sections/Hero'
 import { Program } from './sections/Program'
@@ -17,7 +17,9 @@ import { Venue } from './sections/Venue'
 
 export default function App() {
   const [opened, setOpened] = useState(false)
+  const closing = useRef(false)
   const music = useRef<MusicControlHandle>(null)
+  const gate = useRef<GateHandle>(null)
   const s = useContent().sections
   useSmoothScroll()
 
@@ -26,9 +28,21 @@ export default function App() {
     music.current?.play()
   }
 
+  const onClose = () => {
+    if (!opened || closing.current) return
+    closing.current = true
+    void (async () => {
+      await scrollToTop()
+      await gate.current?.close()
+      await music.current?.fadeOut(1.2)
+      setOpened(false)
+      closing.current = false
+    })()
+  }
+
   return (
     <>
-      <Gate onOpen={onOpen} />
+      <Gate ref={gate} onOpen={onOpen} />
       <main className="page">
         <Hero opened={opened} />
         {s.countdown && <Countdown />}
@@ -39,7 +53,7 @@ export default function App() {
         {s.dressCode && <DressCode />}
         {s.gifts && <Gifts />}
         {s.travel && <Travel />}
-        <Footer />
+        <Footer onClose={onClose} />
       </main>
 
       <MusicControl ref={music} opened={opened} />

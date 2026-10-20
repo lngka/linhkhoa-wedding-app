@@ -1,10 +1,15 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState, type CSSProperties } from 'react'
+import gsap from 'gsap'
 import { useContent } from '../i18n'
 import { Icon } from './Ornaments'
 
 const DEFAULT_VOLUME = 0.45
 
-export type MusicControlHandle = { play: () => void }
+export type MusicControlHandle = {
+  play: () => void
+  /** Fade audio out, pause, then restore the user's volume setting for the next play. */
+  fadeOut: (duration?: number) => Promise<void>
+}
 
 /** Floating speaker. Music starts with the door tap; the button opens mute + volume. */
 export const MusicControl = forwardRef<MusicControlHandle, { opened: boolean }>(function MusicControl({ opened }, ref) {
@@ -13,6 +18,7 @@ export const MusicControl = forwardRef<MusicControlHandle, { opened: boolean }>(
   const root = useRef<HTMLDivElement>(null)
   const volumeRef = useRef(DEFAULT_VOLUME)
   const mutedRef = useRef(false)
+  const fade = useRef<gsap.core.Tween | null>(null)
   const [open, setOpen] = useState(false)
   const [volume, setVolume] = useState(DEFAULT_VOLUME)
   const [muted, setMuted] = useState(false)
@@ -25,9 +31,30 @@ export const MusicControl = forwardRef<MusicControlHandle, { opened: boolean }>(
     play() {
       const a = audio.current
       if (!a) return
-      a.volume = volumeRef.current
+      fade.current?.kill()
+      a.volume = mutedRef.current ? 0 : volumeRef.current
       a.muted = mutedRef.current
       a.play().then(() => setPlaying(true), () => setPlaying(false))
+    },
+    fadeOut(duration = 1.8) {
+      const a = audio.current
+      if (!a || a.paused) return Promise.resolve()
+      setOpen(false)
+      fade.current?.kill()
+      const prefer = volumeRef.current
+      return new Promise((resolve) => {
+        fade.current = gsap.to(a, {
+          volume: 0,
+          duration,
+          ease: 'power1.out',
+          onComplete: () => {
+            a.pause()
+            a.volume = prefer
+            setPlaying(false)
+            resolve()
+          },
+        })
+      })
     },
   }))
 

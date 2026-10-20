@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { asset } from '../content'
 import { useContent } from '../i18n'
@@ -7,13 +7,17 @@ import { GoldDust, type GoldDustHandle } from '../fx/GoldDust'
 import { Seal } from '../fx/Ornaments'
 import { scrollLock } from '../fx/useScrollAnim'
 
-/** Full-screen stained-glass doors with a monogram seal. Tap to open. */
-export function Gate({ onOpen }: { onOpen: () => void }) {
+export type GateHandle = { close: () => Promise<void> }
+
+/** Full-screen stained-glass doors with a monogram seal. Tap to open; can close again from the footer. */
+export const Gate = forwardRef<GateHandle, { onOpen: () => void }>(function Gate({ onOpen }, ref) {
   const content = useContent()
   const root = useRef<HTMLDivElement>(null)
   const dust = useRef<GoldDustHandle>(null)
-  const [gone, setGone] = useState(false)
-  const opening = useRef(false)
+  const tl = useRef<gsap.core.Timeline | null>(null)
+  const busy = useRef(false)
+  const [open, setOpen] = useState(false)
+  const [closing, setClosing] = useState(false)
 
   useEffect(() => {
     scrollLock(true)
@@ -25,37 +29,73 @@ export function Gate({ onOpen }: { onOpen: () => void }) {
     return () => ctx.revert()
   }, [])
 
-  const open = () => {
-    if (opening.current) return
-    opening.current = true
+  const openDoors = () => {
+    if (busy.current || open) return
+    busy.current = true
     onOpen()
     const el = root.current!
     const rect = el.getBoundingClientRect()
     dust.current?.burst(rect.width / 2, rect.height / 2, 60)
 
-    const done = () => {
-      scrollLock(false)
-      setGone(true)
-    }
-    gsap
-      .timeline({ onComplete: done })
+    tl.current?.kill()
+    tl.current = gsap
+      .timeline({
+        onComplete: () => {
+          scrollLock(false)
+          setOpen(true)
+          busy.current = false
+        },
+      })
       .to(['.gate-seal', '.gate-hint'], { opacity: 0, duration: 0.5, ease: 'power1.out' }, 0)
       .to('.gate-left', { rotateY: -105, duration: 1.8, ease: 'power3.inOut' }, 0.2)
       .to('.gate-right', { rotateY: 105, duration: 1.8, ease: 'power3.inOut' }, 0.2)
       .to(el, { opacity: 0, duration: 0.8, ease: 'power1.out' }, 1.2)
   }
 
-  if (gone) return null
+  useImperativeHandle(ref, () => ({
+    close() {
+      if (busy.current || !open) return Promise.resolve()
+      busy.current = true
+      setClosing(true)
+      scrollLock(true)
+      const el = root.current!
+      // Start from the post-open pose so the reverse reads cleanly.
+      gsap.set(el, { opacity: 0 })
+      gsap.set('.gate-left', { rotateY: -105 })
+      gsap.set('.gate-right', { rotateY: 105 })
+      gsap.set(['.gate-seal', '.gate-hint'], { opacity: 0, y: 0 })
+
+      return new Promise<void>((resolve) => {
+        tl.current?.kill()
+        tl.current = gsap
+          .timeline({
+            onComplete: () => {
+              setOpen(false)
+              setClosing(false)
+              busy.current = false
+              resolve()
+            },
+          })
+          .to(el, { opacity: 1, duration: 0.55, ease: 'power1.out' }, 0)
+          .to('.gate-left', { rotateY: 0, duration: 1.8, ease: 'power3.inOut' }, 0.15)
+          .to('.gate-right', { rotateY: 0, duration: 1.8, ease: 'power3.inOut' }, 0.15)
+          .to(['.gate-seal', '.gate-hint'], { opacity: 1, duration: 0.7, ease: 'power2.out' }, 1.15)
+      })
+    },
+  }), [open])
+
+  const inert = open && !closing
 
   return (
     <div
       ref={root}
       role="button"
-      tabIndex={0}
+      tabIndex={inert ? -1 : 0}
+      aria-hidden={inert}
       aria-label={content.gate.hint}
-      onClick={open}
-      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && open()}
-      className="fixed inset-0 z-50 flex cursor-pointer justify-center"
+      onClick={openDoors}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && openDoors()}
+      className={`fixed inset-0 z-50 flex justify-center ${inert ? 'pointer-events-none' : 'cursor-pointer'}`}
     >
       <div className="relative h-full w-full max-w-[480px]">
         {/* Doors only. Firefox drops filtered descendants of a perspective box
@@ -88,4 +128,4 @@ export function Gate({ onOpen }: { onOpen: () => void }) {
       </div>
     </div>
   )
-}
+})

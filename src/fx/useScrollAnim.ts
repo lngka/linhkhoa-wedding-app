@@ -19,10 +19,21 @@ export const scrollToEl = (el: Element | null) => {
   else el.scrollIntoView({ behavior: 'smooth' })
 }
 
-export const scrollToTop = () => {
-  if (lenis) lenis.scrollTo(0, { duration: 1.6 })
-  else window.scrollTo({ top: 0, behavior: 'smooth' })
-}
+export const scrollToTop = () =>
+  new Promise<void>((resolve) => {
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.6, onComplete: () => resolve() })
+      return
+    }
+    const onEnd = () => {
+      window.removeEventListener('scrollend', onEnd)
+      resolve()
+    }
+    window.addEventListener('scrollend', onEnd, { once: true })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    // Fallback if scrollend never fires (already at top / older browsers).
+    window.setTimeout(onEnd, 800)
+  })
 
 export function useSmoothScroll() {
   // Lazy images change the page height; keep trigger positions in sync.

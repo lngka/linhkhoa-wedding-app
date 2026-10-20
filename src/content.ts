@@ -128,7 +128,7 @@ const vi = {
     thanks: 'Cảm ơn bạn đã là một phần trong câu chuyện của chúng mình.',
     bayAlt: 'Vịnh Lan Hạ',
     install: 'Cài thiệp',
-    top: 'Về đầu trang',
+    close: 'Đóng thiệp',
     contact: 'Liên hệ',
     creditEmail: 'ck@ck-nguyen.com',
   },
@@ -275,7 +275,7 @@ const en = merge<Content>(vi, {
     thanks: 'Thank you for being part of our story.',
     bayAlt: 'Lan Ha Bay',
     install: 'Install invite',
-    top: 'Back to top',
+    close: 'Close invite',
     contact: 'Contact',
   },
 

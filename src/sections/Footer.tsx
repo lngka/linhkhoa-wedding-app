@@ -3,7 +3,7 @@ import { asset } from '../content'
 import { GlassShimmer } from '../fx/GlassShimmer'
 import { GoldDust } from '../fx/GoldDust'
 import { HeartDivider, Icon } from '../fx/Ornaments'
-import { scrollToTop, useReveal } from '../fx/useScrollAnim'
+import { useReveal } from '../fx/useScrollAnim'
 import { useContent } from '../i18n'
 import { promptInstall, useCanInstall } from '../pwa'
 
@@ -12,7 +12,7 @@ const BAY = asset('bay.webp')
 const chip =
   'inline-flex h-10 shrink-0 items-center justify-center rounded-full border border-gold/70 text-cream transition active:scale-95'
 
-export function Footer() {
+export function Footer({ onClose }: { onClose: () => void }) {
   const content = useContent()
   const root = useRef<HTMLElement>(null)
   const canInstall = useCanInstall()
@@ -60,8 +60,8 @@ export function Footer() {
               {content.footer.install}
             </button>
           )}
-          <button type="button" onClick={scrollToTop} aria-label={content.footer.top} title={content.footer.top} className={`${chip} w-10`}>
-            <Icon name="top" className="h-[18px] w-[18px]" />
+          <button type="button" onClick={onClose} aria-label={content.footer.close} title={content.footer.close} className={`${chip} w-10`}>
+            <Icon name="close" className="h-[18px] w-[18px]" />
           </button>
           <a
             href={`mailto:${content.footer.creditEmail}`}
