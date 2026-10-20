@@ -94,7 +94,6 @@ const vi = {
 
   welcome: {
     title: 'Thư mời',
-    body: 'Chúng mình hân hạnh mời bạn đến chung vui trong ngày trọng đại, nơi biển xanh vịnh Lan Hạ chứng giám cho lời hẹn ước trăm năm.',
   },
 
   program: {
@@ -285,7 +284,6 @@ const en = merge<Content>(vi, {
 
   welcome: {
     title: 'Invitation',
-    body: 'We would be honoured to have you with us on our special day, with the blue waters of Lan Ha Bay as witness to our vows.',
   },
 
   program: {

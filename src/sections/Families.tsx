@@ -41,10 +41,6 @@ export function Families() {
         <HeartDivider />
       </div>
 
-      <p data-reveal="up" className="mx-auto mt-6 max-w-[340px] font-serif text-[17px] leading-relaxed text-navy/80 italic">
-        {content.welcome.body}
-      </p>
-
       <div data-reveal="up" className="mx-auto mt-10 grid max-w-[360px] grid-cols-[1fr_auto_1fr] items-start gap-3">
         {[groom, null, bride].map((fam, i) =>
           fam ? (
