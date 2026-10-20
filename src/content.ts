@@ -37,12 +37,12 @@ const vi = {
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Flamingo+Cat+Ba+Resort',
     stay: {
       title: 'Kỳ nghỉ tại resort',
-      intro: 'Xin mời khách nghỉ lại phòng do bọn mình đài thọ. Trong ngày 22 và sáng ngày 23, bạn được sử dụng những dịch vụ dưới đây.',
+      intro: 'Chúng mình chuẩn bị một đêm tại resort tặng cho mọi người. Từ lúc nhận phòng ngày 22 đến trước khi trả phòng ngày 23, bạn được sử dụng những dịch vụ dưới đây.',
       gifts: [
         {
           icon: 'dinner' as const,
           title: 'Bữa ăn',
-          text: 'Một bữa tối, một bữa trưa, một bữa sáng và một set trà chiều tại nhà hàng resort.',
+          text: 'Ngày nhận phòng có suất ăn trưa, sau đó trà chiều và tiệc cưới. Hôm sau là bữa sáng và bữa trưa trước khi trả phòng, tại nhà hàng resort.',
         },
         {
           icon: 'onsen' as const,
@@ -153,7 +153,7 @@ const vi = {
     stay: {
       label: 'Lưu trú',
       name: 'Flamingo Cát Bà Resort',
-      lines: ['Nghỉ dưỡng tại resort view biển', 'Full pension + Buffet', 'Thời gian bên nhau và nhiều kỷ niệm đẹp'],
+      lines: ['Nghỉ dưỡng tại resort view biển', 'Các bữa ăn trong thời gian lưu trú', 'Thời gian bên nhau và nhiều kỷ niệm đẹp'],
       datesLabel: 'Thời gian',
       dates: '22 - 23.12.2026',
     },
@@ -237,11 +237,11 @@ const en = merge<Content>(vi, {
     city: 'Cat Ba, Hai Phong',
     stay: {
       title: 'Your stay at the resort',
-      intro: 'Your stay is our gift - the room is on us. On the 22nd and the morning of the 23rd, the services below are yours to enjoy.',
+      intro: 'Your stay is our gift — the room is on us. From check-in on the 22nd until checkout on the 23rd, the services below are yours to enjoy.',
       gifts: [
         {
           title: 'Meals',
-          text: 'One dinner, one lunch, one breakfast, and an afternoon tea set at the resort restaurant.',
+          text: 'On arrival, lunch is included, followed by afternoon tea and the wedding banquet. The next day brings breakfast, then lunch before checkout, all at the resort restaurant.',
         },
         {
           title: 'Onsen',
@@ -337,7 +337,7 @@ const en = merge<Content>(vi, {
     ],
     stay: {
       label: 'Stay',
-      lines: ['Sea-view resort stay', 'Full board + buffet', 'Time together and lots of lovely memories'],
+      lines: ['Sea-view resort stay', 'Meals throughout your stay', 'Time together and lots of lovely memories'],
       datesLabel: 'Dates',
     },
   },
